@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mango Web</title>
+
+<style>
+:root {
+  --orange: #ff8a00;
+  --light-orange: #ffad33;
+  --black: #050505;
+  --card: #111111;
+  --border: #292929;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--black);
+  color: white;
+}
+
+header {
+  text-align: center;
+  padding: 40px 20px 30px;
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  margin: 0;
+  color: var(--orange);
+  font-size: clamp(50px, 9vw, 90px);
+  font-weight: 900;
+  letter-spacing: -4px;
+}
+
+.tagline {
+  color: #999;
+  margin: 10px 0 22px;
+}
+
+#search {
+  width: min(600px, 90%);
+  padding: 14px 18px;
+  border: 2px solid var(--orange);
+  border-radius: 30px;
+  background: #090909;
+  color: white;
+  font-size: 16px;
+  outline: none;
+}
+
+#search::placeholder {
+  color: #777;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 18px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(5,5,5,.95);
+  border-bottom: 1px solid var(--border);
+}
+
+nav button {
+  border: 1px solid var(--orange);
+  background: transparent;
+  color: var(--orange);
+  padding: 10px 17px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+nav button:hover,
+nav button.active {
+  background: var(--orange);
+  color: black;
+}
+
+main {
+  width: min(1150px, 92%);
+  margin: auto;
+  padding: 30px 0 60px;
+}
+
+section {
+  margin-bottom: 45px;
+}
+
+.section-title {
+  color: var(--orange);
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.section-note {
+  color: #888;
+  margin-bottom: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px;
+}
+
+.movie-grid {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.card {
+  display: block;
+  text-decoration: none;
+  color: white;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--orange);
+  border-radius: 12px;
+  padding: 18px;
+  min-height: 75px;
+  transition: .15s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  background: #191919;
+  border-color: var(--orange);
+}
+
+.card-name {
+  color: var(--light-orange);
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.movie {
+  min-height: 110px;
+  display: flex;
+  align-items: end;
+  background:
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(255,138,0,.25),
+      transparent 35%
+    ),
+    linear-gradient(145deg, #191919, #090909);
+}
+
+.movie .card-name {
+  font-size: 16px;
+}
+
+.notice {
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 16px;
+  background: #0c0c0c;
+  color: #999;
+  margin-bottom: 30px;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  border-top: 1px solid var(--border);
+  color: #666;
+}
+
+.hidden {
+  display: none !important;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1 class="logo">🥭 MANGO WEB</h1>
+
+<p class="tagline">
+Movies • Game Sites • Websites
+</p>
+
+<input
+  id="search"
+  type="search"
+  placeholder="Search Mango Web..."
+>
+
+</header>
+
+<nav>
+
+<button class="active" data-target="all">
+All
+</button>
+
+<button data-target="movies">
+🎬 Movies
+</button>
+
+<button data-target="games">
+🎮 Game Sites
+</button>
+
+<button data-target="websites">
+🌐 Websites
+</button>
+
+</nav>
+
+<main>
+
+<div class="notice">
+
+<strong style="color:#ff8a00;">
+Mango Web
+</strong>
+
+— Movies, game sites, and websites all in one place.
+
+</div>
+
+
+<!-- ================= MOVIES ================= -->
+
+<section id="movies">
+
+<h2 class="section-title">
+🎬 Movies
+</h2>
+
+<p class="section-note">
+Movie titles from your picture.
+</p>
+
+<div class="grid movie-grid">
+
+
+<a class="card movie" href="#" data-name="cars">
+<span class="card-name">Cars</span>
+</a>
+
+<a class="card movie" href="#" data-name="cars 2">
+<span class="card-name">Cars 2</span>
+</a>
+
+<a class="card movie" href="#" data-name="cars 3">
+<span class="card-name">Cars 3</span>
+</a>
+
+<a class="card movie" href="#" data-name="back to the future">
+<span class="card-name">Back to the Future</span>
+</a>
+
+<a class="card movie" href="#" data-name="the incredibles">
+<span class="card-name">The Incredibles</span>
+</a>
+
+<a class="card movie" href="#" data-name="the lego batman movie">
+<span class="card-name">The LEGO Batman Movie</span>
+</a>
+
+<a class="card movie" href="#" data-name="spider-man">
+<span class="card-name">Spider-Man</span>
+</a>
+
+<a class="card movie" href="#" data-name="sonic the hedgehog">
+<span class="card-name">Sonic the Hedgehog</span>
+</a>
+
+<a class="card movie" href="#" data-name="good burger">
+<span class="card-name">Good Burger</span>
+</a>
+
+<a class="card movie" href="#" data-name="spider-man into the spider-verse">
+<span class="card-name">Spider-Man: Into the Spider-Verse</span>
+</a>
+
+<a class="card movie" href="#" data-name="the nightmare before christmas">
+<span class="card-name">The Nightmare Before Christmas</span>
+</a>
+
+<a class="card movie" href="#" data-name="bee movie">
+<span class="card-name">Bee Movie</span>
+</a>
+
+<a class="card movie" href="#" data-name="spider-man homecoming">
+<span class="card-name">Spider-Man: Homecoming</span>
+</a>
+
+<a class="card movie" href="#" data-name="spider-man far from home">
+<span class="card-name">Spider-Man: Far From Home</span>
+</a>
+
+<a class="card movie" href="#" data-name="diary of a wimpy kid">
+<span class="card-name">Diary of a Wimpy Kid</span>
+</a>
+
+<a class="card movie" href="#" data-name="avengers endgame">
+<span class="card-name">Avengers: Endgame</span>
+</a>
+
+<a class="card movie" href="#" data-name="ratatouille">
+<span class="card-name">Ratatouille</span>
+</a>
+
+<a class="card movie" href="#" data-name="five nights at freddys">
+<span class="card-name">Five Nights at Freddy’s</span>
+</a>
+
+<a class="card movie" href="#" data-name="free guy">
+<span class="card-name">Free Guy</span>
+</a>
+
+<a class="card movie" href="#" data-name="detective pikachu">
+<span class="card-name">Detective Pikachu</span>
+</a>
+
+<a class="card movie" href="#" data-name="the bad guys">
+<span class="card-name">The Bad Guys</span>
+</a>
+
+<a class="card movie" href="#" data-name="a minecraft movie">
+<span class="card-name">A Minecraft Movie</span>
+</a>
+
+
+</div>
+</section>
+
+
+<!-- ================= GAME SITES ================= -->
+
+<section id="games">
+
+<h2 class="section-title">
+🎮 Game Sites
+</h2>
+
+<p class="section-note">
+Game sites from your picture.
+</p>
+
+<div class="grid">
+
+
+<a class="card" href="#" data-name="classroom side">
+<span class="card-name">Classroom Side</span>
+</a>
+
+<a class="card" href="#" data-name="classroom resources">
+<span class="card-name">Classroom Resources</span>
+</a>
+
+<a class="card" href="#" data-name="unblocked wt">
+<span class="card-name">Unblocked WT</span>
+</a>
+
+<a class="card" href="#" data-name="unblocked games 66">
+<span class="card-name">Unblocked Games 66</span>
+</a>
+
+<a class="card" href="#" data-name="6x">
+<span class="card-name">6x</span>
+</a>
+
+<a class="card" href="#" data-name="unblocked games 76">
+<span class="card-name">Unblocked Games 76</span>
+</a>
+
+<a class="card" href="#" data-name="html5">
+<span class="card-name">HTML5</span>
+</a>
+
+<a class="card" href="#" data-name="delta hub">
+<span class="card-name">Delta Hub</span>
+</a>
+
+<a class="card" href="#" data-name="fake rapididentity">
+<span class="card-name">Fake RapidIdentity</span>
+</a>
+
+<a class="card" href="#" data-name="nblocked games">
+<span class="card-name">Nblocked Games</span>
+</a>
+
+<a
+  class="card"
+  href="https://www.google.com/doodles"
+  target="_blank"
+  data-name="all google doodles"
+>
+<span class="card-name">All Google Doodles</span>
+</a>
+
+
+</div>
+</section>
+
+
+<!-- ================= WEBSITES ================= -->
+
+<section id="websites">
+
+<h2 class="section-title">
+🌐 Websites
+</h2>
+
+<p class="section-note">
+Websites from your picture.
+</p>
+
+<div class="grid">
+
+
+<a
+  class="card"
+  href="https://www.coolmathgames.com/"
+  target="_blank"
+  data-name="cool math games"
+>
+<span class="card-name">Cool Math Games</span>
+</a>
+
+<a class="card" href="#" data-name="g+">
+<span class="card-name">G+</span>
+</a>
+
+<a class="card" href="#" data-name="duck math">
+<span class="card-name">Duck Math</span>
+</a>
+
+<a class="card" href="#" data-name="ubg hyper">
+<span class="card-name">UBG Hyper</span>
+</a>
+
+<a class="card" href="#" data-name="selenite">
+<span class="card-name">Selenite</span>
+</a>
+
+<a class="card" href="#" data-name="tpf">
+<span class="card-name">TPF</span>
+</a>
+
+<a
+  class="card"
+  href="https://soundcloud.com/"
+  target="_blank"
+  data-name="soundcloud"
+>
+<span class="card-name">SoundCloud</span>
+</a>
+
+<a class="card" href="#" data-name="crazy cattle">
+<span class="card-name">Crazy Cattle</span>
+</a>
+
+<a class="card" href="#" data-name="retro bowl">
+<span class="card-name">Retro Bowl</span>
+</a>
+
+<a
+  class="card"
+  href="https://www.coolmathgames.com/0-ovo/play"
+  target="_blank"
+  data-name="ovo"
+>
+<span class="card-name">OvO</span>
+</a>
+
+<a class="card" href="#" data-name="2 min football">
+<span class="card-name">2 Min Football</span>
+</a>
+
+<a class="card" href="#" data-name="spacebar clicker">
+<span class="card-name">Spacebar Clicker</span>
+</a>
+
+<a class="card" href="#" data-name="fnaf">
+<span class="card-name">FNAF</span>
+</a>
+
+<a
+  class="card"
+  href="https://www.crossyroad.com/"
+  target="_blank"
+  data-name="crossy road"
+>
+<span class="card-name">Crossy Road</span>
+</a>
+
+<a class="card" href="#" data-name="odd games">
+<span class="card-name">Odd Games</span>
+</a>
+
+<a
+  class="card"
+  href="https://github.com/"
+  target="_blank"
+  data-name="github"
+>
+<span class="card-name">GitHub</span>
+</a>
+
+
+<!-- NEW WEBSITES -->
+
+<a class="card" href="#" data-name="fern">
+<span class="card-name">Fern</span>
+</a>
+
+<a class="card" href="#" data-name="valera">
+<span class="card-name">Valera</span>
+</a>
+
+<a class="card" href="#" data-name="opium">
+<span class="card-name">Opium</span>
+</a>
+
+
+</div>
+</section>
+
+</main>
+
+
+<footer>
+Mango Web 🥭 • Made with HTML, CSS & JavaScript
+</footer>
+
+
+<script>
+
+const search = document.getElementById("search");
+
+const cards = [
+  ...document.querySelectorAll(".card")
+];
+
+const sections = [
+  ...document.querySelectorAll("main section")
+];
+
+const buttons = [
+  ...document.querySelectorAll("nav button")
+];
+
+
+search.addEventListener("input", () => {
+
+  const q = search.value
+    .toLowerCase()
+    .trim();
+
+  cards.forEach(card => {
+
+    const name =
+      (card.dataset.name || "")
+      .toLowerCase();
+
+    card.classList.toggle(
+      "hidden",
+      q && !name.includes(q)
+    );
+
+  });
+
+});
+
+
+buttons.forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    buttons.forEach(b =>
+      b.classList.remove("active")
+    );
+
+    button.classList.add("active");
+
+    const target =
+      button.dataset.target;
+
+    sections.forEach(section => {
+
+      section.classList.toggle(
+        "hidden",
+        target !== "all" &&
+        section.id !== target
+      );
+
+    });
+
+    search.value = "";
+
+    cards.forEach(card =>
+      card.classList.remove("hidden")
+    );
+
+
+    if (target !== "all") {
+
+      document
+        .getElementById(target)
+        .scrollIntoView({
+          behavior: "smooth"
+        });
+
+    } else {
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    }
+
+  });
+
+});
+
+</script>
+
+</body>
+</html>
