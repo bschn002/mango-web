@@ -1,362 +1,334 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mango Web</title>
+
+<title>🥭 Mango Web</title>
 
 <style>
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #000;
-  color: #ff8c00;
-}
-
-/* ================= HEADER ================= */
-
-header {
-  text-align: center;
-  padding: 30px 20px;
-  border-bottom: 2px solid #ff8c00;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 48px;
-}
-
-/* ================= NAV ================= */
-
-nav {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 30px;
-  padding: 20px;
-}
-
-nav a {
-  color: #ff8c00;
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-nav a:hover {
-  text-decoration: underline;
-}
-
-/* ================= SEARCH ================= */
-
-.search-container {
-  display: flex;
-  justify-content: center;
-  padding: 10px 20px 25px;
-}
-
-.search-container form {
-  display: flex;
-  width: 90%;
-  max-width: 700px;
-  gap: 8px;
-}
-
-#search {
-  flex: 1;
-  padding: 14px;
-  background: #111;
-  color: white;
-  border: 2px solid #ff8c00;
-  border-radius: 8px;
-  font-size: 16px;
-  outline: none;
-}
-
-#search::placeholder {
-  color: #aaa;
-}
-
-.search-button {
-  padding: 14px 22px;
-  background: #ff8c00;
-  color: #000;
-  border: 2px solid #ff8c00;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.search-button:hover {
-  background: #ffa733;
-}
-
-/* ================= SECTIONS ================= */
-
-section {
-  padding: 30px 20px;
-  max-width: 1400px;
-  margin: auto;
-}
-
-section h2 {
-  border-bottom: 2px solid #ff8c00;
-  padding-bottom: 12px;
-  font-size: 30px;
-}
-
-/* ================= GRID ================= */
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: 22px;
-  margin-top: 22px;
-}
-
-/* ================= CARDS ================= */
-
-.card {
-  background: #111;
-  border: 2px solid #ff8c00;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: 0.2s;
-}
-
-.card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 18px #ff8c00;
-}
-
-.card h3 {
-  margin: 0;
-  padding: 15px 10px;
-  text-align: center;
-  font-size: 18px;
-}
-
-/* ================= GAME CARDS ================= */
-
-.game-card {
-  cursor: pointer;
-}
-
-.game-icon {
-  height: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 60px;
-  background: #090909;
-}
-
-/* ================= MOVIES ================= */
-
-.movie-card {
-  cursor: pointer;
-}
-
-.movie-placeholder {
-  height: 290px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 60px;
-  background: #090909;
-}
-
-/* ================= WEBSITES ================= */
-
-.website-card a {
-  display: block;
-  color: #ff8c00;
-  text-decoration: none;
-}
-
-.website-icon {
-  height: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 60px;
-}
-
-/* ================= FOOTER ================= */
-
-footer {
-  text-align: center;
-  padding: 30px;
-  border-top: 2px solid #ff8c00;
-  margin-top: 30px;
-}
-
-/* ================= GAME PLAYER ================= */
-
-#gamePlayer {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: #000;
-  overflow: hidden;
-}
-
-.game-player-box {
-  width: 100%;
-  height: 100%;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  background: #000;
-  overflow: hidden;
-}
-
-/* MANGO WEB GAME HEADER */
-
-.game-player-header {
-  flex: 0 0 64px;
-  height: 64px;
-  min-height: 64px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  padding: 10px 20px;
-
-  background: #000;
-  border-bottom: 2px solid #ff8c00;
-}
-
-.game-player-header h2 {
-  margin: 0;
-  color: #ff8c00;
-  font-size: 28px;
-}
-
-.game-controls {
-  display: flex;
-  gap: 8px;
-}
-
-.game-button {
-  background: #ff8c00;
-  color: #000;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 15px;
-}
-
-.game-button:hover {
-  background: #ffa733;
-}
-
-/* ================= GAME ITSELF ================= */
-
-/*
-   THIS IS THE IMPORTANT PART.
-
-   The iframe takes up ALL remaining space
-   inside the Mango Web game box.
-*/
-
-#gameFrame {
-  display: block;
-
-  flex: 1 1 auto;
-
-  width: 100%;
-  height: auto;
-
-  min-width: 0;
-  min-height: 0;
-
-  margin: 0;
-  padding: 0;
-
-  border: 0;
-
-  background: #000;
-
-  overflow: hidden;
-}
-
-/* ================= REAL BROWSER FULLSCREEN ================= */
-
-#gamePlayer:fullscreen {
-  width: 100vw;
-  height: 100vh;
-  background: #000;
-}
-
-#gamePlayer:fullscreen .game-player-box {
-  width: 100vw;
-  height: 100vh;
-}
-
-#gamePlayer:fullscreen .game-player-header {
-  flex-basis: 60px;
-  height: 60px;
-  min-height: 60px;
-}
-
-#gamePlayer:fullscreen #gameFrame {
-  width: 100%;
-  height: auto;
-  flex: 1 1 auto;
-}
-
-/* ================= MOBILE ================= */
-
-@media (max-width: 600px) {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: #000;
+    color: #ff8c00;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  /* =========================
+     HEADER
+     ========================= */
+
+  header {
+    background: #000;
+    border-bottom: 2px solid #ff8c00;
+    padding: 22px 20px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
 
   header h1 {
+    margin: 0 0 15px;
     font-size: 38px;
   }
 
-  .search-container form {
-    flex-direction: column;
+  nav {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
   }
 
-  .search-button {
+  nav a {
+    color: #ff8c00;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 9px 15px;
+    border: 1px solid #ff8c00;
+    border-radius: 8px;
+  }
+
+  nav a:hover {
+    background: #ff8c00;
+    color: #000;
+  }
+
+  /* =========================
+     SEARCH
+     ========================= */
+
+  .search-area {
+    max-width: 800px;
+    margin: 25px auto;
+    padding: 0 20px;
+  }
+
+  .search-area form {
+    display: flex;
+    gap: 10px;
+  }
+
+  .search-area input {
+    flex: 1;
+    padding: 14px;
+    border-radius: 8px;
+    border: 2px solid #ff8c00;
+    background: #111;
+    color: white;
+    font-size: 16px;
+    outline: none;
+  }
+
+  .search-area button {
+    padding: 14px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #ff8c00;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  /* =========================
+     SECTIONS
+     ========================= */
+
+  section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 45px 20px;
+  }
+
+  section h2 {
+    font-size: 30px;
+    border-bottom: 2px solid #ff8c00;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+  }
+
+  /* =========================
+     CARDS
+     ========================= */
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 18px;
+  }
+
+  .card {
+    background: #111;
+    border: 2px solid #ff8c00;
+    border-radius: 12px;
+    padding: 20px;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: 0.2s;
+  }
+
+  .card:hover {
+    transform: translateY(-3px);
+    background: #181818;
+  }
+
+  .card h3 {
+    margin: 0 0 10px;
+    font-size: 21px;
+  }
+
+  .card p {
+    margin: 0 0 15px;
+    color: #ddd;
+  }
+
+  .card button,
+  .card a {
+    display: inline-block;
     width: 100%;
+    padding: 11px;
+    border: none;
+    border-radius: 8px;
+    background: #ff8c00;
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .card button:hover,
+  .card a:hover {
+    background: #ffa733;
+  }
+
+  /* =========================
+     GAME PLAYER
+     ========================= */
+
+  #gamePlayer {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: #000;
+  }
+
+  .game-player-box {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+    min-height: 0;
+
+    background: #000;
   }
 
   .game-player-header {
-    flex-basis: 58px;
-    height: 58px;
-    min-height: 58px;
-    padding: 8px 10px;
+    flex: 0 0 64px;
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 10px 20px;
+
+    background: #000;
+    border-bottom: 2px solid #ff8c00;
   }
 
   .game-player-header h2 {
-    font-size: 20px;
+    margin: 0;
+    color: #ff8c00;
+    font-size: 26px;
+  }
+
+  .game-controls {
+    display: flex;
+    gap: 8px;
   }
 
   .game-button {
-    padding: 8px 10px;
-    font-size: 13px;
+    background: #ff8c00;
+    color: #000;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 15px;
   }
-}
+
+  .game-button:hover {
+    background: #ffa733;
+  }
+
+  .game-frame-container {
+    flex: 1 1 auto;
+
+    width: 100%;
+    height: calc(100vh - 64px);
+
+    min-width: 0;
+    min-height: 0;
+
+    overflow: hidden;
+    background: #000;
+  }
+
+  #gameFrame {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    min-width: 100%;
+    min-height: 100%;
+
+    border: 0;
+    margin: 0;
+    padding: 0;
+
+    background: #000;
+  }
+
+  /* When the GAME itself goes fullscreen */
+  #gameFrame:fullscreen {
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+  }
+
+  /* =========================
+     FOOTER
+     ========================= */
+
+  footer {
+    text-align: center;
+    padding: 35px 20px;
+    border-top: 2px solid #ff8c00;
+    margin-top: 30px;
+  }
+
+  footer p {
+    margin: 0;
+  }
+
+  /* =========================
+     MOBILE
+     ========================= */
+
+  @media (max-width: 600px) {
+
+    header h1 {
+      font-size: 30px;
+    }
+
+    .search-area form {
+      flex-direction: column;
+    }
+
+    .game-player-header {
+      flex-basis: 58px;
+      height: 58px;
+      padding: 8px 12px;
+    }
+
+    .game-player-header h2 {
+      font-size: 19px;
+    }
+
+    .game-button {
+      padding: 8px 11px;
+      font-size: 13px;
+    }
+
+    .game-frame-container {
+      height: calc(100vh - 58px);
+    }
+  }
 </style>
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
+<!-- =========================
+     HEADER
+     ========================= -->
 
 <header>
 
@@ -368,27 +340,36 @@ footer {
     <a href="#websites">Websites</a>
   </nav>
 
-  <div class="search-container">
-    <form id="searchForm">
-
-      <input
-        id="search"
-        type="text"
-        placeholder="Search Mango Web..."
-        autocomplete="off"
-      >
-
-      <button class="search-button" type="submit">
-        Search
-      </button>
-
-    </form>
-  </div>
-
 </header>
 
 
-<!-- ================= GAMES ================= -->
+<!-- =========================
+     SEARCH
+     ========================= -->
+
+<div class="search-area">
+
+  <form onsubmit="searchMango(event)">
+
+    <input
+      id="searchInput"
+      type="text"
+      placeholder="Search the web..."
+      autocomplete="off"
+    >
+
+    <button type="submit">
+      Search
+    </button>
+
+  </form>
+
+</div>
+
+
+<!-- =========================
+     GAMES
+     ========================= -->
 
 <section id="games">
 
@@ -396,102 +377,195 @@ footer {
 
   <div class="grid">
 
-    <div class="card game-card"
-      onclick="playGame(
+
+    <!-- GOLF ORBIT -->
+
+    <div class="card">
+
+      <h3>Golf Orbit</h3>
+
+      <p>Golf game</p>
+
+      <button onclick="playGame(
         'Golf Orbit',
         'https://duck.exampredictor.org/class/golf-orbit'
       )">
-      <div class="game-icon">⛳</div>
-      <h3>Golf Orbit</h3>
+        Play
+      </button>
+
     </div>
 
-    <div class="card game-card"
-      onclick="playGame(
+
+    <!-- BASEBALL BROS -->
+
+    <div class="card">
+
+      <h3>Baseball Bros</h3>
+
+      <p>Baseball game</p>
+
+      <button onclick="playGame(
         'Baseball Bros',
         'https://duck.exampredictor.org/class/baseball-bros'
       )">
-      <div class="game-icon">⚾</div>
-      <h3>Baseball Bros</h3>
+        Play
+      </button>
+
     </div>
 
-    <div class="card game-card"
-      onclick="playGame(
+
+    <!-- BASKET BROS -->
+
+    <div class="card">
+
+      <h3>Basket Bros</h3>
+
+      <p>Basketball game</p>
+
+      <button onclick="playGame(
         'Basket Bros',
         'https://duck.exampredictor.org/class/basket-bros'
       )">
-      <div class="game-icon">🏀</div>
-      <h3>Basket Bros</h3>
+        Play
+      </button>
+
     </div>
 
-    <div class="card game-card"
-      onclick="playGame(
+
+    <!-- BASKETBALL LEGENDS -->
+
+    <div class="card">
+
+      <h3>Basketball Legends</h3>
+
+      <p>Basketball game</p>
+
+      <button onclick="playGame(
         'Basketball Legends',
         'https://duck.exampredictor.org/class/basketball-legends'
       )">
-      <div class="game-icon">🏀</div>
-      <h3>Basketball Legends</h3>
+        Play
+      </button>
+
     </div>
 
-    <div class="card game-card"
-      onclick="playGame(
+
+    <!-- FOOTBALL BROS -->
+
+    <div class="card">
+
+      <h3>Football Bros</h3>
+
+      <p>Football game</p>
+
+      <button onclick="playGame(
         'Football Bros',
         'https://fb.vtune.net/'
       )">
-      <div class="game-icon">🏈</div>
-      <h3>Football Bros</h3>
+        Play
+      </button>
+
     </div>
 
-    <div class="card game-card"
-      onclick="playGame(
+
+    <!-- FIREBOY AND WATERGIRL -->
+
+    <div class="card">
+
+      <h3>Fireboy and Watergirl</h3>
+
+      <p>Adventure game</p>
+
+      <button onclick="playGame(
         'Fireboy and Watergirl',
         'https://www.coolmathgames.com/0-fireboy-watergirl-2-light-temple#immersiveModal'
       )">
-      <div class="game-icon">🔥💧</div>
-      <h3>Fireboy and Watergirl</h3>
+        Play
+      </button>
+
     </div>
 
-    <div class="card game-card"
-      onclick="playGame(
+
+    <!-- RACE -->
+
+    <div class="card">
+
+      <h3>Race</h3>
+
+      <p>Racing game</p>
+
+      <button onclick="playGame(
         'Race',
         'https://sites.google.com/view/drive-u-7-home-10/survival-race/race-fullscreen?authuser=0'
       )">
-      <div class="game-icon">🏎️</div>
-      <h3>Race</h3>
+        Play
+      </button>
+
     </div>
 
-    <div class="card game-card"
-      onclick="playGame(
+
+    <!-- DUNE DASH -->
+
+    <div class="card">
+
+      <h3>Dune Dash</h3>
+
+      <p>Driving game</p>
+
+      <button onclick="playGame(
         'Dune Dash',
         'https://sites.google.com/view/drive-u-7-home-10/dune-dash/dune-dash-fs?authuser=0'
       )">
-      <div class="game-icon">🏜️</div>
-      <h3>Dune Dash</h3>
+        Play
+      </button>
+
     </div>
 
-    <div class="card game-card"
-      onclick="playGame(
+
+    <!-- OVO -->
+
+    <div class="card">
+
+      <h3>OVO</h3>
+
+      <p>Platform game</p>
+
+      <button onclick="playGame(
         'OVO',
         'https://duck.exampredictor.org/class/ovo'
       )">
-      <div class="game-icon">⚪</div>
-      <h3>OVO</h3>
+        Play
+      </button>
+
     </div>
 
-    <div class="card game-card"
-      onclick="playGame(
+
+    <!-- RUN 3 -->
+
+    <div class="card">
+
+      <h3>Run 3</h3>
+
+      <p>Running game</p>
+
+      <button onclick="playGame(
         'Run 3',
         'https://www.run3.org/game'
       )">
-      <div class="game-icon">🏃</div>
-      <h3>Run 3</h3>
+        Play
+      </button>
+
     </div>
+
 
   </div>
 
 </section>
 
 
-<!-- ================= MOVIES ================= -->
+<!-- =========================
+     MOVIES
+     ========================= -->
 
 <section id="movies">
 
@@ -499,78 +573,147 @@ footer {
 
   <div class="grid">
 
-    <div class="card movie-card"
-      onclick="openMovie('https://stellar.gdn/movie/969681')">
-      <div class="movie-placeholder">🕷️</div>
+
+    <div class="card">
       <h3>Spider-Man: Brand New Day</h3>
+      <p>Movie</p>
+      <a
+        href="https://stellar.gdn/movie/969681"
+        target="_blank"
+        rel="noopener">
+        Open
+      </a>
     </div>
 
-    <div class="card movie-card"
-      onclick="openMovie('https://stellar.gdn/movie/1297842')">
-      <div class="movie-placeholder">🐐</div>
+
+    <div class="card">
       <h3>GOAT</h3>
+      <p>Movie</p>
+      <a
+        href="https://stellar.gdn/movie/1297842"
+        target="_blank"
+        rel="noopener">
+        Open
+      </a>
     </div>
 
-    <div class="card movie-card"
-      onclick="openMovie('https://stellar.gdn/movie/550988')">
-      <div class="movie-placeholder">🎬</div>
+
+    <div class="card">
       <h3>Free Guy</h3>
+      <p>Movie</p>
+      <a
+        href="https://stellar.gdn/movie/550988"
+        target="_blank"
+        rel="noopener">
+        Open
+      </a>
     </div>
 
-    <div class="card movie-card"
-      onclick="openMovie('https://stellar.gdn/movie/8193')">
-      <div class="movie-placeholder">🎬</div>
+
+    <div class="card">
       <h3>Napoleon Dynamite</h3>
+      <p>Movie</p>
+      <a
+        href="https://stellar.gdn/movie/8193"
+        target="_blank"
+        rel="noopener">
+        Open
+      </a>
     </div>
 
-    <div class="card movie-card"
-      onclick="openMovie('https://stellar.gdn/movie/105')">
-      <div class="movie-placeholder">🚗</div>
+
+    <div class="card">
       <h3>Back to the Future</h3>
+      <p>Movie</p>
+      <a
+        href="https://stellar.gdn/movie/105"
+        target="_blank"
+        rel="noopener">
+        Open
+      </a>
     </div>
 
-    <div class="card movie-card"
-      onclick="openMovie('https://stellar.gdn/movie/920')">
-      <div class="movie-placeholder">🏎️</div>
+
+    <div class="card">
       <h3>Cars</h3>
+      <p>Movie</p>
+      <a
+        href="https://stellar.gdn/movie/920"
+        target="_blank"
+        rel="noopener">
+        Open
+      </a>
     </div>
 
-    <div class="card movie-card"
-      onclick="openMovie('https://stellar.gdn/movie/324849')">
-      <div class="movie-placeholder">🦇</div>
+
+    <div class="card">
       <h3>The LEGO Batman Movie</h3>
+      <p>Movie</p>
+      <a
+        href="https://stellar.gdn/movie/324849"
+        target="_blank"
+        rel="noopener">
+        Open
+      </a>
     </div>
 
-    <div class="card movie-card"
-      onclick="openMovie('https://stellar.gdn/movie/629542')">
-      <div class="movie-placeholder">🐺</div>
+
+    <div class="card">
       <h3>The Bad Guys</h3>
+      <p>Movie</p>
+      <a
+        href="https://stellar.gdn/movie/629542"
+        target="_blank"
+        rel="noopener">
+        Open
+      </a>
     </div>
 
-    <div class="card movie-card"
-      onclick="openMovie('https://stellar.gdn/movie/14817')">
-      <div class="movie-placeholder">🍔</div>
+
+    <div class="card">
       <h3>Good Burger</h3>
+      <p>Movie</p>
+      <a
+        href="https://stellar.gdn/movie/14817"
+        target="_blank"
+        rel="noopener">
+        Open
+      </a>
     </div>
 
-    <div class="card movie-card"
-      onclick="openMovie('https://stellar.gdn/movie/950387')">
-      <div class="movie-placeholder">⛏️</div>
+
+    <div class="card">
       <h3>A Minecraft Movie</h3>
+      <p>Movie</p>
+      <a
+        href="https://stellar.gdn/movie/950387"
+        target="_blank"
+        rel="noopener">
+        Open
+      </a>
     </div>
 
-    <div class="card movie-card"
-      onclick="openMovie('https://stellar.gdn/movie/268531')">
-      <div class="movie-placeholder">📚</div>
-      <h3>Captain Underpants: The First Epic Movie</h3>
+
+    <div class="card">
+      <h3>Captain Underpants</h3>
+      <p>Movie</p>
+      <a
+        href="https://stellar.gdn/movie/268531"
+        target="_blank"
+        rel="noopener">
+        Open
+      </a>
     </div>
+
 
   </div>
 
 </section>
 
 
-<!-- ================= WEBSITES ================= -->
+<!-- =========================
+     WEBSITES
+     ========================= -->
 
 <section id="websites">
 
@@ -578,41 +721,58 @@ footer {
 
   <div class="grid">
 
-    <div class="card website-card">
+
+    <div class="card">
+
+      <h3>Google</h3>
+
+      <p>Search the web</p>
+
       <a
         href="https://www.google.com"
         target="_blank"
-        rel="noopener noreferrer"
-      >
-        <div class="website-icon">🔎</div>
-        <h3>Google</h3>
+        rel="noopener">
+        Open
       </a>
+
     </div>
 
-    <div class="card website-card">
+
+    <div class="card">
+
+      <h3>YouTube</h3>
+
+      <p>Watch videos</p>
+
       <a
         href="https://www.youtube.com"
         target="_blank"
-        rel="noopener noreferrer"
-      >
-        <div class="website-icon">▶️</div>
-        <h3>YouTube</h3>
+        rel="noopener">
+        Open
       </a>
+
     </div>
+
 
   </div>
 
 </section>
 
 
-<!-- ================= FOOTER ================= -->
+<!-- =========================
+     FOOTER
+     ========================= -->
 
 <footer>
-  🥭 Mango Web
+
+  <p>🥭 Mango Web</p>
+
 </footer>
 
 
-<!-- ================= GAME PLAYER ================= -->
+<!-- =========================
+     GAME PLAYER
+     ========================= -->
 
 <div id="gamePlayer">
 
@@ -640,109 +800,164 @@ footer {
 
     </div>
 
-    <iframe
-      id="gameFrame"
-      allow="fullscreen; autoplay; gamepad"
-      allowfullscreen
-      frameborder="0">
-    </iframe>
+
+    <div class="game-frame-container">
+
+      <iframe
+        id="gameFrame"
+        title="Mango Web Game"
+        allow="fullscreen; autoplay; gamepad"
+        allowfullscreen>
+      </iframe>
+
+    </div>
 
   </div>
 
 </div>
 
 
-<!-- ================= JAVASCRIPT ================= -->
-
 <script>
 
-function playGame(title, url) {
+  /* =========================
+     OPEN GAME
+     ========================= */
 
-  const player = document.getElementById("gamePlayer");
-  const frame = document.getElementById("gameFrame");
-  const titleBox = document.getElementById("gameTitle");
+  function playGame(title, url) {
 
-  titleBox.textContent = title;
+    const player =
+      document.getElementById("gamePlayer");
 
-  frame.src = url;
+    const frame =
+      document.getElementById("gameFrame");
 
-  player.style.display = "block";
-
-  document.body.style.overflow = "hidden";
-}
+    const titleBox =
+      document.getElementById("gameTitle");
 
 
-/* ================= FULLSCREEN ================= */
+    titleBox.textContent = title;
 
-async function fullscreenGame() {
+    frame.src = url;
 
-  const player = document.getElementById("gamePlayer");
+    player.style.display = "block";
 
-  try {
-
-    if (player.requestFullscreen) {
-      await player.requestFullscreen();
-    }
-
-  } catch (error) {
-
-    console.log("Fullscreen was not available.", error);
-
+    document.body.style.overflow = "hidden";
   }
 
-}
 
+  /* =========================
+     FULLSCREEN GAME
+     ========================= */
 
-/* ================= CLOSE GAME ================= */
+  async function fullscreenGame() {
 
-async function closeGame() {
+    const frame =
+      document.getElementById("gameFrame");
 
-  const player = document.getElementById("gamePlayer");
-  const frame = document.getElementById("gameFrame");
+    try {
 
-  try {
+      if (frame.requestFullscreen) {
 
-    if (document.fullscreenElement) {
-      await document.exitFullscreen();
+        await frame.requestFullscreen();
+
+      }
+
+    } catch (error) {
+
+      console.log(
+        "Fullscreen was not available.",
+        error
+      );
+
     }
-
-  } catch (error) {
-
-    console.log("Could not exit fullscreen.", error);
-
   }
 
-  player.style.display = "none";
 
-  frame.src = "";
+  /* =========================
+     CLOSE GAME
+     ========================= */
 
-  document.body.style.overflow = "auto";
-}
+  async function closeGame() {
 
+    const player =
+      document.getElementById("gamePlayer");
 
-/* ================= MOVIES ================= */
-
-function openMovie(url) {
-
-  window.open(url, "_blank", "noopener,noreferrer");
-
-}
+    const frame =
+      document.getElementById("gameFrame");
 
 
-/* ================= SEARCH ================= */
+    try {
 
-document.getElementById("searchForm").addEventListener(
-  "submit",
-  function(event) {
+      if (document.fullscreenElement) {
+
+        await document.exitFullscreen();
+
+      }
+
+    } catch (error) {
+
+      console.log(
+        "Could not exit fullscreen.",
+        error
+      );
+
+    }
+
+
+    frame.src = "";
+
+    player.style.display = "none";
+
+    document.body.style.overflow = "";
+  }
+
+
+  /* =========================
+     ESCAPE KEY
+     ========================= */
+
+  document.addEventListener(
+    "keydown",
+    function(event) {
+
+      if (event.key === "Escape") {
+
+        const player =
+          document.getElementById("gamePlayer");
+
+        if (
+          player.style.display === "block"
+        ) {
+
+          closeGame();
+
+        }
+
+      }
+
+    }
+  );
+
+
+  /* =========================
+     SEARCH
+     ========================= */
+
+  function searchMango(event) {
 
     event.preventDefault();
 
+    const searchInput =
+      document.getElementById("searchInput");
+
     const searchText =
-      document.getElementById("search").value.trim();
+      searchInput.value.trim();
+
 
     if (!searchText) {
       return;
     }
+
 
     const encodedSearch =
       btoa(
@@ -751,28 +966,13 @@ document.getElementById("searchForm").addEventListener(
         )
       );
 
+
     window.location.href =
-      "https://3e3c.org/search?query=" + encodedSearch;
-
+      "https://3e3c.org/search?query=" +
+      encodedSearch;
   }
-);
-
-
-/* ================= ESC KEY ================= */
-
-document.addEventListener(
-  "keydown",
-  function(event) {
-
-    if (event.key === "Escape") {
-      closeGame();
-    }
-
-  }
-);
 
 </script>
 
 </body>
 </html>
-```
