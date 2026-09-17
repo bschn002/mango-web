@@ -3,189 +3,260 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>🥭 Mango Web</title>
+<title>Mango Web</title>
 
 <style>
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #050505;
-    color: white;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #000;
+  color: #ff8c00;
 }
 
 /* HEADER */
 header {
-    text-align: center;
-    padding: 45px 20px 35px;
-    background: linear-gradient(180deg, #151515, #050505);
+  text-align: center;
+  padding: 30px 20px;
+  border-bottom: 2px solid #ff8c00;
 }
 
 header h1 {
-    margin: 0;
-    font-size: 52px;
-    color: #ff8a00;
-    text-shadow: 0 0 18px rgba(255,138,0,.35);
+  margin: 0;
+  font-size: 48px;
 }
 
-header p {
-    color: #ffad33;
-    font-size: 18px;
-    margin-top: 10px;
-}
-
-/* GOOGLE SEARCH */
-.search-box {
-    max-width: 700px;
-    margin: 25px auto 0;
-    display: flex;
-    gap: 10px;
-}
-
-.search-box input {
-    flex: 1;
-    padding: 15px 18px;
-    border-radius: 12px;
-    border: 2px solid #ff8a00;
-    background: #111;
-    color: white;
-    font-size: 17px;
-    outline: none;
-}
-
-.search-box input:focus {
-    box-shadow: 0 0 15px rgba(255,138,0,.35);
-}
-
-.search-box button {
-    padding: 15px 22px;
-    border: none;
-    border-radius: 12px;
-    background: #ff8a00;
-    color: black;
-    font-weight: bold;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.search-box button:hover {
-    background: #ffad33;
-}
-
-/* NAVIGATION */
+/* NAV */
 nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 15px;
-    background: rgba(5,5,5,.96);
-    border-bottom: 1px solid #252525;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 20px;
 }
 
-nav button {
-    padding: 10px 18px;
-    border-radius: 20px;
-    border: 1px solid #ff8a00;
-    background: #111;
-    color: #ffad33;
-    cursor: pointer;
-    font-weight: bold;
+nav a {
+  color: #ff8c00;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
 }
 
-nav button:hover,
-nav button.active {
-    background: #ff8a00;
-    color: black;
+nav a:hover {
+  text-decoration: underline;
 }
 
-/* MAIN */
-main {
-    max-width: 1200px;
-    margin: auto;
-    padding: 30px 20px 60px;
+/* SEARCH */
+.search-container {
+  display: flex;
+  justify-content: center;
+  padding: 10px 20px 25px;
 }
 
+.search-container form {
+  display: flex;
+  width: 90%;
+  max-width: 700px;
+  gap: 8px;
+}
+
+#search {
+  flex: 1;
+  padding: 14px;
+  background: #111;
+  color: white;
+  border: 2px solid #ff8c00;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+}
+
+#search::placeholder {
+  color: #aaa;
+}
+
+.search-button {
+  padding: 14px 22px;
+  background: #ff8c00;
+  color: #000;
+  border: 2px solid #ff8c00;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* SECTIONS */
 section {
-    margin-bottom: 45px;
+  padding: 30px 20px;
+  max-width: 1400px;
+  margin: auto;
 }
 
 section h2 {
-    color: #ff8a00;
-    border-bottom: 2px solid #252525;
-    padding-bottom: 10px;
+  border-bottom: 2px solid #ff8c00;
+  padding-bottom: 12px;
+  font-size: 30px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 22px;
+  margin-top: 22px;
 }
 
 /* CARDS */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-    gap: 16px;
-}
-
 .card {
-    display: block;
-    padding: 22px 18px;
-    background: #111;
-    border: 1px solid #292929;
-    border-radius: 14px;
-    color: white;
-    text-decoration: none;
-    transition: .2s;
+  background: #111;
+  border: 2px solid #ff8c00;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: 0.2s;
 }
 
 .card:hover {
-    transform: translateY(-4px);
-    border-color: #ff8a00;
-    box-shadow: 0 5px 20px rgba(255,138,0,.18);
-}
-
-.emoji {
-    font-size: 32px;
-    margin-bottom: 10px;
+  transform: scale(1.03);
+  box-shadow: 0 0 18px #ff8c00;
 }
 
 .card h3 {
-    margin: 0;
-    color: #ffad33;
-    font-size: 18px;
+  margin: 0;
+  padding: 15px 10px;
+  text-align: center;
+  font-size: 18px;
 }
 
-.card p {
-    margin: 7px 0 0;
-    color: #aaa;
-    font-size: 13px;
+/* GAME CARDS */
+.game-card {
+  cursor: pointer;
 }
 
-/* HIDDEN */
-.hidden {
-    display: none !important;
+.game-icon {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  background: #090909;
+}
+
+/* GAME PLAYER */
+#gamePlayer {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,0.97);
+  padding: 15px;
+}
+
+.game-player-box {
+  width: 100%;
+  height: 100%;
+  max-width: 1400px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.game-player-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.game-player-header h2 {
+  margin: 0;
+  color: #ff8c00;
+}
+
+.close-button {
+  background: #ff8c00;
+  color: #000;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#gameFrame {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  border: 2px solid #ff8c00;
+  border-radius: 10px;
+  background: white;
+}
+
+/* MOVIES */
+.movie-card {
+  cursor: pointer;
+}
+
+.movie-poster {
+  width: 100%;
+  height: 290px;
+  object-fit: cover;
+  display: block;
+  background: #111;
+}
+
+.movie-placeholder {
+  height: 290px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  background: #090909;
+}
+
+/* WEBSITES */
+.website-card a {
+  display: block;
+  color: #ff8c00;
+  text-decoration: none;
+}
+
+.website-icon {
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
 }
 
 /* FOOTER */
 footer {
-    text-align: center;
-    padding: 30px;
-    border-top: 1px solid #222;
-    color: #777;
+  text-align: center;
+  padding: 30px;
+  border-top: 2px solid #ff8c00;
+  margin-top: 30px;
 }
 
 /* MOBILE */
 @media (max-width: 600px) {
-    header h1 {
-        font-size: 38px;
-    }
+  header h1 {
+    font-size: 38px;
+  }
 
-    .search-box {
-        flex-direction: column;
-    }
+  .search-container form {
+    flex-direction: column;
+  }
+
+  .search-button {
+    width: 100%;
+  }
 }
 </style>
 </head>
@@ -193,261 +264,323 @@ footer {
 <body>
 
 <header>
-
-    <h1>🥭 MANGO WEB</h1>
-
-    <p>Game Sites • Websites</p>
-
-    <!-- REAL GOOGLE SEARCH -->
-    <form
-        class="search-box"
-        action="https://www.google.com/search"
-        method="GET"
-        target="_blank"
-    >
-
-        <input
-            type="text"
-            name="q"
-            placeholder="Search the web with Google..."
-            autocomplete="off"
-        >
-
-        <button type="submit">🔎 Search</button>
-
-    </form>
-
+  <h1>🥭 Mango Web</h1>
 </header>
 
-
 <nav>
-
-    <button class="filter active" data-filter="all">
-        All
-    </button>
-
-    <button class="filter" data-filter="games">
-        🎮 Game Sites
-    </button>
-
-    <button class="filter" data-filter="websites">
-        🌐 Websites
-    </button>
-
+  <a href="#games">🎮 Games</a>
+  <a href="#movies">🎬 Movies</a>
+  <a href="#websites">🌐 Websites</a>
 </nav>
 
-
-<main>
-
-<!-- ================= GAME SITES ================= -->
-
-<section data-section="games">
-
-    <h2>🎮 Game Sites</h2>
-
-    <div class="grid">
-
-        <a
-            class="card"
-            href="https://www.coolmathgames.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            <div class="emoji">🧠</div>
-            <h3>Cool Math Games</h3>
-            <p>Games, puzzles and challenges</p>
-        </a>
+<!-- SEARCH -->
+<div class="search-container">
+  <form id="searchForm">
+    <input
+      type="text"
+      id="search"
+      placeholder="Search Mango Web..."
+      autocomplete="off"
+    >
+    <button class="search-button" type="submit">Search</button>
+  </form>
+</div>
 
 
-        <a
-            class="card"
-            href="https://www.crossyroad.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            <div class="emoji">🐔</div>
-            <h3>Crossy Road</h3>
-            <p>Official Crossy Road website</p>
-        </a>
+<!-- ==================== GAMES ==================== -->
 
+<section id="games">
 
-        <a
-            class="card"
-            href="https://www.newstargames.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            <div class="emoji">🏈</div>
-            <h3>New Star Games</h3>
-            <p>Developer of Retro Bowl</p>
-        </a>
+<h2>🎮 Games</h2>
 
+<div class="grid">
 
-        <a
-            class="card"
-            href="https://www.google.com/doodles"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            <div class="emoji">🎨</div>
-            <h3>Google Doodles</h3>
-            <p>Explore Google's interactive doodles</p>
-        </a>
+  <div class="card game-card"
+       onclick="playGame('Football Bros','https://www.miniplay.com/embed/football-bros')">
+    <div class="game-icon">🏈</div>
+    <h3>Football Bros</h3>
+  </div>
 
+  <div class="card game-card"
+       onclick="playGame('Golf Orbit','https://www.miniplay.com/embed/golf-orbit')">
+    <div class="game-icon">⛳</div>
+    <h3>Golf Orbit</h3>
+  </div>
 
-        <a
-            class="card"
-            href="https://www.coolmathgames.com/0-ovo/play"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            <div class="emoji">🟠</div>
-            <h3>OvO</h3>
-            <p>Play OvO on Cool Math Games</p>
-        </a>
+  <div class="card game-card"
+       onclick="playGame('Basketball Legends','https://www.miniplay.com/embed/basketball-legends')">
+    <div class="game-icon">🏀</div>
+    <h3>Basketball Legends</h3>
+  </div>
 
+  <!-- Not embedded -->
+  <div class="card">
+    <div class="game-icon">🏎️</div>
+    <h3>Smash Karts</h3>
+  </div>
 
-        <a
-            class="card"
-            href="https://www.spacebar-clicker.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            <div class="emoji">⌨️</div>
-            <h3>Spacebar Clicker</h3>
-            <p>Click the spacebar</p>
-        </a>
+  <!-- Not embedded -->
+  <div class="card">
+    <div class="game-icon">🥚</div>
+    <h3>Shell Shockers</h3>
+  </div>
 
-    </div>
+  <div class="card game-card"
+       onclick="playGame('Level Devil','https://www.miniplay.com/embed/level-devil')">
+    <div class="game-icon">😈</div>
+    <h3>Level Devil</h3>
+  </div>
 
+  <div class="card game-card"
+       onclick="playGame('Run 3','https://www.miniplay.com/embed/run-3')">
+    <div class="game-icon">🏃</div>
+    <h3>Run 3</h3>
+  </div>
+
+  <div class="card game-card"
+       onclick="playGame(
+       'Fireboy and Watergirl',
+       'https://www.miniplay.com/embed/fireboy-and-watergirl-the-forest-temple')">
+    <div class="game-icon">🔥</div>
+    <h3>Fireboy and Watergirl</h3>
+  </div>
+
+  <div class="card game-card"
+       onclick="playGame('OVO','https://www.miniplay.com/embed/ovo')">
+    <div class="game-icon">⭕</div>
+    <h3>OVO</h3>
+  </div>
+
+  <div class="card game-card"
+       onclick="playGame('Basketball Random','https://www.miniplay.com/embed/basket-random')">
+    <div class="game-icon">🏀</div>
+    <h3>Basketball Random</h3>
+  </div>
+
+  <!-- Not embedded -->
+  <div class="card">
+    <div class="game-icon">👵</div>
+    <h3>Granny 1</h3>
+  </div>
+
+  <div class="card game-card"
+       onclick="playGame('Minecraft','https://www.miniplay.com/embed/minecraft')">
+    <div class="game-icon">⛏️</div>
+    <h3>Minecraft</h3>
+  </div>
+
+  <div class="card game-card"
+       onclick="playGame('Race','https://www.miniplay.com/embed/race')">
+    <div class="game-icon">🏁</div>
+    <h3>Race</h3>
+  </div>
+
+  <div class="card game-card"
+       onclick="playGame('Dune Dash','https://www.miniplay.com/embed/dune-dash')">
+    <div class="game-icon">🏜️</div>
+    <h3>Dune Dash</h3>
+  </div>
+
+  <div class="card game-card"
+       onclick="playGame('Climb Hard','https://www.miniplay.com/embed/climb-hard')">
+    <div class="game-icon">🧗</div>
+    <h3>Climb Hard</h3>
+  </div>
+
+  <div class="card game-card"
+       onclick="playGame('Baseball Bros','https://www.miniplay.com/embed/baseball-bros')">
+    <div class="game-icon">⚾</div>
+    <h3>Baseball Bros</h3>
+  </div>
+
+  <div class="card game-card"
+       onclick="playGame('Basketball Bros','https://www.miniplay.com/embed/basketball-bros')">
+    <div class="game-icon">🏀</div>
+    <h3>Basketball Bros</h3>
+  </div>
+
+</div>
 </section>
 
 
-<!-- ================= WEBSITES ================= -->
+<!-- ==================== GAME PLAYER ==================== -->
 
-<section data-section="websites">
+<div id="gamePlayer">
 
-    <h2>🌐 Websites</h2>
+  <div class="game-player-box">
 
-    <div class="grid">
+    <div class="game-player-header">
+      <h2 id="gameTitle">Game</h2>
 
-        <a
-            class="card"
-            href="https://soundcloud.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            <div class="emoji">🎵</div>
-            <h3>SoundCloud</h3>
-            <p>Listen to music and discover artists</p>
-        </a>
-
-
-        <a
-            class="card"
-            href="https://github.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            <div class="emoji">💻</div>
-            <h3>GitHub</h3>
-            <p>Build and explore software</p>
-        </a>
-
-
-        <a
-            class="card"
-            href="https://www.google.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            <div class="emoji">🔍</div>
-            <h3>Google</h3>
-            <p>Search the web</p>
-        </a>
-
-
-        <a
-            class="card"
-            href="https://www.youtube.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            <div class="emoji">▶️</div>
-            <h3>YouTube</h3>
-            <p>Watch videos and creators</p>
-        </a>
-
-
-        <a
-            class="card"
-            href="https://www.wikipedia.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            <div class="emoji">📚</div>
-            <h3>Wikipedia</h3>
-            <p>Online encyclopedia</p>
-        </a>
-
-
-        <a
-            class="card"
-            href="https://www.canva.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            <div class="emoji">🎨</div>
-            <h3>Canva</h3>
-            <p>Design and create</p>
-        </a>
-
+      <button class="close-button" onclick="closeGame()">
+        ✕ Close
+      </button>
     </div>
 
+    <iframe
+      id="gameFrame"
+      allow="fullscreen; autoplay; gamepad"
+      allowfullscreen>
+    </iframe>
+
+  </div>
+
+</div>
+
+
+<!-- ==================== MOVIES ==================== -->
+
+<section id="movies">
+
+<h2>🎬 Movies</h2>
+
+<div class="grid">
+
+  <div class="card movie-card"
+       onclick="window.location.href='https://stellar.gdn/movie/969681'">
+    <div class="movie-placeholder">🕷️</div>
+    <h3>Spider-Man: Brand New Day</h3>
+  </div>
+
+  <div class="card movie-card"
+       onclick="window.location.href='https://stellar.gdn/movie/1297842'">
+    <div class="movie-placeholder">🐐</div>
+    <h3>GOAT</h3>
+  </div>
+
+  <div class="card movie-card"
+       onclick="window.location.href='https://stellar.gdn/movie/550988'">
+    <div class="movie-placeholder">🎮</div>
+    <h3>Free Guy</h3>
+  </div>
+
+  <div class="card movie-card"
+       onclick="window.location.href='https://stellar.gdn/movie/8193'">
+    <div class="movie-placeholder">🕺</div>
+    <h3>Napoleon Dynamite</h3>
+  </div>
+
+  <div class="card movie-card"
+       onclick="window.location.href='https://stellar.gdn/movie/105'">
+    <div class="movie-placeholder">🚗</div>
+    <h3>Back to the Future</h3>
+  </div>
+
+  <div class="card movie-card"
+       onclick="window.location.href='https://stellar.gdn/movie/920'">
+    <div class="movie-placeholder">🏎️</div>
+    <h3>Cars</h3>
+  </div>
+
+  <div class="card movie-card"
+       onclick="window.location.href='https://stellar.gdn/movie/324849'">
+    <div class="movie-placeholder">🦇</div>
+    <h3>The LEGO Batman Movie</h3>
+  </div>
+
+  <div class="card movie-card"
+       onclick="window.location.href='https://stellar.gdn/movie/629542'">
+    <div class="movie-placeholder">🐺</div>
+    <h3>The Bad Guys</h3>
+  </div>
+
+  <div class="card movie-card"
+       onclick="window.location.href='https://stellar.gdn/movie/14817'">
+    <div class="movie-placeholder">🍔</div>
+    <h3>Good Burger</h3>
+  </div>
+
+  <div class="card movie-card"
+       onclick="window.location.href='https://stellar.gdn/movie/950387'">
+    <div class="movie-placeholder">⛏️</div>
+    <h3>A Minecraft Movie</h3>
+  </div>
+
+  <div class="card movie-card"
+       onclick="window.location.href='https://stellar.gdn/movie/268531'">
+    <div class="movie-placeholder">🩲</div>
+    <h3>Captain Underpants: The First Epic Movie</h3>
+  </div>
+
+</div>
 </section>
 
-</main>
+
+<!-- ==================== WEBSITES ==================== -->
+
+<section id="websites">
+
+<h2>🌐 Websites</h2>
+
+<div class="grid">
+
+  <div class="card website-card">
+    <a href="https://www.google.com" target="_blank">
+      <div class="website-icon">🔎</div>
+      <h3>Google</h3>
+    </a>
+  </div>
+
+  <div class="card website-card">
+    <a href="https://www.youtube.com" target="_blank">
+      <div class="website-icon">▶️</div>
+      <h3>YouTube</h3>
+    </a>
+  </div>
+
+</div>
+</section>
 
 
 <footer>
-    🥭 Mango Web • Made with HTML, CSS & JavaScript
+  🥭 Mango Web
 </footer>
 
 
+<!-- ==================== JAVASCRIPT ==================== -->
+
 <script>
 
-/* CATEGORY FILTERS */
+function playGame(title, url) {
 
-const buttons = document.querySelectorAll(".filter");
-const sections = document.querySelectorAll("section");
+  document.getElementById("gameTitle").textContent = title;
 
-buttons.forEach(button => {
+  document.getElementById("gameFrame").src = url;
 
-    button.addEventListener("click", () => {
+  document.getElementById("gamePlayer").style.display = "block";
 
-        buttons.forEach(b => b.classList.remove("active"));
+  document.body.style.overflow = "hidden";
+}
 
-        button.classList.add("active");
 
-        const filter = button.dataset.filter;
+function closeGame() {
 
-        sections.forEach(section => {
+  document.getElementById("gamePlayer").style.display = "none";
 
-            if (filter === "all") {
-                section.classList.remove("hidden");
-            }
+  document.getElementById("gameFrame").src = "";
 
-            else if (section.dataset.section === filter) {
-                section.classList.remove("hidden");
-            }
+  document.body.style.overflow = "auto";
+}
 
-            else {
-                section.classList.add("hidden");
-            }
 
-        });
+/* SEARCH */
 
-    });
+document
+.getElementById("searchForm")
+.addEventListener("submit", function(event) {
+
+  event.preventDefault();
+
+  const searchText =
+    document.getElementById("search").value.trim();
+
+  if (!searchText) return;
+
+  const encodedSearch =
+    btoa(unescape(encodeURIComponent(searchText)));
+
+  window.location.href =
+    "https://3e3c.org/search?query=" + encodedSearch;
 
 });
 
@@ -455,13 +588,3 @@ buttons.forEach(button => {
 
 </body>
 </html>
-<a
-    class="card"
-    href="https://docs.google.com/document/d/1eO3J6JqMyWBkxDyH90fhHLcJiJ16MLs1oe3Gd4NoI-Q/edit?tab=t.0"
-    target="_blank"
-    rel="noopener noreferrer"
->
-    <div class="emoji">📄</div>
-    <h3>Secret Resource</h3>
-    <p>Open the Google Doc</p>
-</a>
