@@ -33,7 +33,7 @@ header h1 {
   font-size: 48px;
 }
 
-/* NAV */
+/* NAVIGATION */
 nav {
   display: flex;
   justify-content: center;
@@ -148,6 +148,43 @@ section h2 {
   background: #090909;
 }
 
+/* MOVIE CARDS */
+.movie-card {
+  cursor: pointer;
+}
+
+.movie-placeholder {
+  height: 290px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  background: #090909;
+}
+
+/* WEBSITE CARDS */
+.website-card a {
+  display: block;
+  color: #ff8c00;
+  text-decoration: none;
+}
+
+.website-icon {
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 30px;
+  border-top: 2px solid #ff8c00;
+  margin-top: 30px;
+}
+
 /* GAME PLAYER */
 #gamePlayer {
   display: none;
@@ -199,51 +236,6 @@ section h2 {
   background: white;
 }
 
-/* MOVIES */
-.movie-card {
-  cursor: pointer;
-}
-
-.movie-poster {
-  width: 100%;
-  height: 290px;
-  object-fit: cover;
-  display: block;
-  background: #111;
-}
-
-.movie-placeholder {
-  height: 290px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 60px;
-  background: #090909;
-}
-
-/* WEBSITES */
-.website-card a {
-  display: block;
-  color: #ff8c00;
-  text-decoration: none;
-}
-
-.website-icon {
-  height: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 60px;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 30px;
-  border-top: 2px solid #ff8c00;
-  margin-top: 30px;
-}
-
 /* MOBILE */
 @media (max-width: 600px) {
   header h1 {
@@ -265,156 +257,232 @@ footer {
 
 <header>
   <h1>🥭 Mango Web</h1>
+
+  <nav>
+    <a href="#games">Games</a>
+    <a href="#movies">Movies</a>
+    <a href="#websites">Websites</a>
+  </nav>
+
+  <div class="search-container">
+    <form id="searchForm">
+      <input
+        id="search"
+        type="text"
+        placeholder="Search Mango Web..."
+        autocomplete="off"
+      >
+      <button class="search-button" type="submit">
+        Search
+      </button>
+    </form>
+  </div>
 </header>
 
-<nav>
-  <a href="#games">🎮 Games</a>
-  <a href="#movies">🎬 Movies</a>
-  <a href="#websites">🌐 Websites</a>
-</nav>
 
-<!-- SEARCH -->
-<div class="search-container">
-  <form id="searchForm">
-    <input
-      type="text"
-      id="search"
-      placeholder="Search Mango Web..."
-      autocomplete="off"
-    >
-    <button class="search-button" type="submit">Search</button>
-  </form>
-</div>
-
-
-<!-- ==================== GAMES ==================== -->
+<!-- ================= GAMES ================= -->
 
 <section id="games">
 
-<h2>🎮 Games</h2>
+  <h2>🎮 Games</h2>
 
-<div class="grid">
+  <div class="grid">
 
-  <div class="card game-card"
-       onclick="playGame('Football Bros','https://www.miniplay.com/embed/football-bros')">
-    <div class="game-icon">🏈</div>
-    <h3>Football Bros</h3>
+    <div class="card game-card"
+         onclick="playGame('Football Bros','https://duck.exampredictor.org/class/football-bros')">
+      <div class="game-icon">🏈</div>
+      <h3>Football Bros</h3>
+    </div>
+
+    <div class="card game-card"
+         onclick="playGame('Golf Orbit','https://duck.exampredictor.org/class/golf-orbit')">
+      <div class="game-icon">⛳</div>
+      <h3>Golf Orbit</h3>
+    </div>
+
+    <div class="card game-card"
+         onclick="playGame('Basket Bros','https://duck.exampredictor.org/class/basket-bros')">
+      <div class="game-icon">🏀</div>
+      <h3>Basket Bros</h3>
+    </div>
+
+    <div class="card game-card"
+         onclick="playGame('Run 3','https://duck.exampredictor.org/class/run-3')">
+      <div class="game-icon">🏃</div>
+      <h3>Run 3</h3>
+    </div>
+
+    <div class="card game-card"
+         onclick="playGame('Basketball Legends','https://duck.exampredictor.org/class/basketball-stars')">
+      <div class="game-icon">🏀</div>
+      <h3>Basketball Legends</h3>
+    </div>
+
+    <div class="card game-card"
+         onclick="playGame('OVO','https://duck.exampredictor.org/class/ovo')">
+      <div class="game-icon">⚪</div>
+      <h3>OVO</h3>
+    </div>
+
+    <div class="card game-card"
+         onclick="playGame('Fireboy and Watergirl','https://www.coolmathgames.com/0-fireboy-watergirl-2-light-temple')">
+      <div class="game-icon">🔥💧</div>
+      <h3>Fireboy and Watergirl</h3>
+    </div>
+
+    <div class="card game-card"
+         onclick="playGame('Race','https://sites.google.com/view/drive-u-7-home-10/survival-race?authuser=0')">
+      <div class="game-icon">🏎️</div>
+      <h3>Race</h3>
+    </div>
+
+    <div class="card game-card"
+         onclick="playGame('Dune Dash','https://sites.google.com/view/drive-u-7-home-10/dune-dash?authuser=0')">
+      <div class="game-icon">🏜️</div>
+      <h3>Dune Dash</h3>
+    </div>
+
+    <div class="card game-card"
+         onclick="playGame('Basketball Random','https://sites.google.com/student.msdwt.k12.in.us/indyweb/games/basket-random?authuser=2')">
+      <div class="game-icon">🏀</div>
+      <h3>Basketball Random</h3>
+    </div>
+
+    <div class="card game-card"
+         onclick="playGame('Minecraft','https://sites.google.com/student.msdwt.k12.in.us/indyweb/games/minecraft?authuser=2')">
+      <div class="game-icon">⛏️</div>
+      <h3>Minecraft</h3>
+    </div>
+
   </div>
-
-  <div class="card game-card"
-       onclick="playGame('Golf Orbit','https://www.miniplay.com/embed/golf-orbit')">
-    <div class="game-icon">⛳</div>
-    <h3>Golf Orbit</h3>
-  </div>
-
-  <div class="card game-card"
-       onclick="playGame('Basketball Legends','https://www.miniplay.com/embed/basketball-legends')">
-    <div class="game-icon">🏀</div>
-    <h3>Basketball Legends</h3>
-  </div>
-
-  <!-- Not embedded -->
-  <div class="card">
-    <div class="game-icon">🏎️</div>
-    <h3>Smash Karts</h3>
-  </div>
-
-  <!-- Not embedded -->
-  <div class="card">
-    <div class="game-icon">🥚</div>
-    <h3>Shell Shockers</h3>
-  </div>
-
-  <div class="card game-card"
-       onclick="playGame('Level Devil','https://www.miniplay.com/embed/level-devil')">
-    <div class="game-icon">😈</div>
-    <h3>Level Devil</h3>
-  </div>
-
-  <div class="card game-card"
-       onclick="playGame('Run 3','https://www.miniplay.com/embed/run-3')">
-    <div class="game-icon">🏃</div>
-    <h3>Run 3</h3>
-  </div>
-
-  <div class="card game-card"
-       onclick="playGame(
-       'Fireboy and Watergirl',
-       'https://www.miniplay.com/embed/fireboy-and-watergirl-the-forest-temple')">
-    <div class="game-icon">🔥</div>
-    <h3>Fireboy and Watergirl</h3>
-  </div>
-
-  <div class="card game-card"
-       onclick="playGame('OVO','https://www.miniplay.com/embed/ovo')">
-    <div class="game-icon">⭕</div>
-    <h3>OVO</h3>
-  </div>
-
-  <div class="card game-card"
-       onclick="playGame('Basketball Random','https://www.miniplay.com/embed/basket-random')">
-    <div class="game-icon">🏀</div>
-    <h3>Basketball Random</h3>
-  </div>
-
-  <!-- Not embedded -->
-  <div class="card">
-    <div class="game-icon">👵</div>
-    <h3>Granny 1</h3>
-  </div>
-
-  <div class="card game-card"
-       onclick="playGame('Minecraft','https://www.miniplay.com/embed/minecraft')">
-    <div class="game-icon">⛏️</div>
-    <h3>Minecraft</h3>
-  </div>
-
-  <div class="card game-card"
-       onclick="playGame('Race','https://www.miniplay.com/embed/race')">
-    <div class="game-icon">🏁</div>
-    <h3>Race</h3>
-  </div>
-
-  <div class="card game-card"
-       onclick="playGame('Dune Dash','https://www.miniplay.com/embed/dune-dash')">
-    <div class="game-icon">🏜️</div>
-    <h3>Dune Dash</h3>
-  </div>
-
-  <div class="card game-card"
-       onclick="playGame('Climb Hard','https://www.miniplay.com/embed/climb-hard')">
-    <div class="game-icon">🧗</div>
-    <h3>Climb Hard</h3>
-  </div>
-
-  <div class="card game-card"
-       onclick="playGame('Baseball Bros','https://www.miniplay.com/embed/baseball-bros')">
-    <div class="game-icon">⚾</div>
-    <h3>Baseball Bros</h3>
-  </div>
-
-  <div class="card game-card"
-       onclick="playGame('Basketball Bros','https://www.miniplay.com/embed/basketball-bros')">
-    <div class="game-icon">🏀</div>
-    <h3>Basketball Bros</h3>
-  </div>
-
-</div>
 </section>
 
 
-<!-- ==================== GAME PLAYER ==================== -->
+<!-- ================= MOVIES ================= -->
+
+<section id="movies">
+
+  <h2>🎬 Movies</h2>
+
+  <div class="grid">
+
+    <div class="card movie-card"
+         onclick="openMovie('https://stellar.gdn/movie/969681')">
+      <div class="movie-placeholder">🕷️</div>
+      <h3>Spider-Man: Brand New Day</h3>
+    </div>
+
+    <div class="card movie-card"
+         onclick="openMovie('https://stellar.gdn/movie/1297842')">
+      <div class="movie-placeholder">🐐</div>
+      <h3>GOAT</h3>
+    </div>
+
+    <div class="card movie-card"
+         onclick="openMovie('https://stellar.gdn/movie/550988')">
+      <div class="movie-placeholder">🎬</div>
+      <h3>Free Guy</h3>
+    </div>
+
+    <div class="card movie-card"
+         onclick="openMovie('https://stellar.gdn/movie/8193')">
+      <div class="movie-placeholder">🎥</div>
+      <h3>Napoleon Dynamite</h3>
+    </div>
+
+    <div class="card movie-card"
+         onclick="openMovie('https://stellar.gdn/movie/105')">
+      <div class="movie-placeholder">🚗</div>
+      <h3>Back to the Future</h3>
+    </div>
+
+    <div class="card movie-card"
+         onclick="openMovie('https://stellar.gdn/movie/920')">
+      <div class="movie-placeholder">🏎️</div>
+      <h3>Cars</h3>
+    </div>
+
+    <div class="card movie-card"
+         onclick="openMovie('https://stellar.gdn/movie/324849')">
+      <div class="movie-placeholder">🦇</div>
+      <h3>The LEGO Batman Movie</h3>
+    </div>
+
+    <div class="card movie-card"
+         onclick="openMovie('https://stellar.gdn/movie/629542')">
+      <div class="movie-placeholder">🐺</div>
+      <h3>The Bad Guys</h3>
+    </div>
+
+    <div class="card movie-card"
+         onclick="openMovie('https://stellar.gdn/movie/14817')">
+      <div class="movie-placeholder">🍔</div>
+      <h3>Good Burger</h3>
+    </div>
+
+    <div class="card movie-card"
+         onclick="openMovie('https://stellar.gdn/movie/950387')">
+      <div class="movie-placeholder">⛏️</div>
+      <h3>A Minecraft Movie</h3>
+    </div>
+
+    <div class="card movie-card"
+         onclick="openMovie('https://stellar.gdn/movie/268531')">
+      <div class="movie-placeholder">📚</div>
+      <h3>Captain Underpants</h3>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= WEBSITES ================= -->
+
+<section id="websites">
+
+  <h2>🌐 Websites</h2>
+
+  <div class="grid">
+
+    <div class="card website-card">
+      <a href="https://www.google.com" target="_blank">
+        <div class="website-icon">🔎</div>
+        <h3>Google</h3>
+      </a>
+    </div>
+
+    <div class="card website-card">
+      <a href="https://www.youtube.com" target="_blank">
+        <div class="website-icon">▶️</div>
+        <h3>YouTube</h3>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<footer>
+  🥭 Mango Web
+</footer>
+
+
+<!-- ================= GAME PLAYER ================= -->
 
 <div id="gamePlayer">
 
   <div class="game-player-box">
 
     <div class="game-player-header">
+
       <h2 id="gameTitle">Game</h2>
 
-      <button class="close-button" onclick="closeGame()">
+      <button
+        class="close-button"
+        onclick="closeGame()">
         ✕ Close
       </button>
+
     </div>
 
     <iframe
@@ -428,118 +496,9 @@ footer {
 </div>
 
 
-<!-- ==================== MOVIES ==================== -->
-
-<section id="movies">
-
-<h2>🎬 Movies</h2>
-
-<div class="grid">
-
-  <div class="card movie-card"
-       onclick="window.location.href='https://stellar.gdn/movie/969681'">
-    <div class="movie-placeholder">🕷️</div>
-    <h3>Spider-Man: Brand New Day</h3>
-  </div>
-
-  <div class="card movie-card"
-       onclick="window.location.href='https://stellar.gdn/movie/1297842'">
-    <div class="movie-placeholder">🐐</div>
-    <h3>GOAT</h3>
-  </div>
-
-  <div class="card movie-card"
-       onclick="window.location.href='https://stellar.gdn/movie/550988'">
-    <div class="movie-placeholder">🎮</div>
-    <h3>Free Guy</h3>
-  </div>
-
-  <div class="card movie-card"
-       onclick="window.location.href='https://stellar.gdn/movie/8193'">
-    <div class="movie-placeholder">🕺</div>
-    <h3>Napoleon Dynamite</h3>
-  </div>
-
-  <div class="card movie-card"
-       onclick="window.location.href='https://stellar.gdn/movie/105'">
-    <div class="movie-placeholder">🚗</div>
-    <h3>Back to the Future</h3>
-  </div>
-
-  <div class="card movie-card"
-       onclick="window.location.href='https://stellar.gdn/movie/920'">
-    <div class="movie-placeholder">🏎️</div>
-    <h3>Cars</h3>
-  </div>
-
-  <div class="card movie-card"
-       onclick="window.location.href='https://stellar.gdn/movie/324849'">
-    <div class="movie-placeholder">🦇</div>
-    <h3>The LEGO Batman Movie</h3>
-  </div>
-
-  <div class="card movie-card"
-       onclick="window.location.href='https://stellar.gdn/movie/629542'">
-    <div class="movie-placeholder">🐺</div>
-    <h3>The Bad Guys</h3>
-  </div>
-
-  <div class="card movie-card"
-       onclick="window.location.href='https://stellar.gdn/movie/14817'">
-    <div class="movie-placeholder">🍔</div>
-    <h3>Good Burger</h3>
-  </div>
-
-  <div class="card movie-card"
-       onclick="window.location.href='https://stellar.gdn/movie/950387'">
-    <div class="movie-placeholder">⛏️</div>
-    <h3>A Minecraft Movie</h3>
-  </div>
-
-  <div class="card movie-card"
-       onclick="window.location.href='https://stellar.gdn/movie/268531'">
-    <div class="movie-placeholder">🩲</div>
-    <h3>Captain Underpants: The First Epic Movie</h3>
-  </div>
-
-</div>
-</section>
-
-
-<!-- ==================== WEBSITES ==================== -->
-
-<section id="websites">
-
-<h2>🌐 Websites</h2>
-
-<div class="grid">
-
-  <div class="card website-card">
-    <a href="https://www.google.com" target="_blank">
-      <div class="website-icon">🔎</div>
-      <h3>Google</h3>
-    </a>
-  </div>
-
-  <div class="card website-card">
-    <a href="https://www.youtube.com" target="_blank">
-      <div class="website-icon">▶️</div>
-      <h3>YouTube</h3>
-    </a>
-  </div>
-
-</div>
-</section>
-
-
-<footer>
-  🥭 Mango Web
-</footer>
-
-
-<!-- ==================== JAVASCRIPT ==================== -->
-
 <script>
+
+/* ================= GAME PLAYER ================= */
 
 function playGame(title, url) {
 
@@ -563,24 +522,45 @@ function closeGame() {
 }
 
 
-/* SEARCH */
+/* ================= MOVIES ================= */
 
-document
-.getElementById("searchForm")
-.addEventListener("submit", function(event) {
+function openMovie(url) {
 
-  event.preventDefault();
+  window.open(url, "_blank");
 
-  const searchText =
-    document.getElementById("search").value.trim();
+}
 
-  if (!searchText) return;
 
-  const encodedSearch =
-    btoa(unescape(encodeURIComponent(searchText)));
+/* ================= SEARCH ================= */
 
-  window.location.href =
-    "https://3e3c.org/search?query=" + encodedSearch;
+document.getElementById("searchForm").addEventListener(
+  "submit",
+  function(event) {
+
+    event.preventDefault();
+
+    const searchText =
+      document.getElementById("search").value.trim();
+
+    if (!searchText) return;
+
+    const encodedSearch =
+      btoa(unescape(encodeURIComponent(searchText)));
+
+    window.location.href =
+      "https://3e3c.org/search?query=" + encodedSearch;
+
+  }
+);
+
+
+/* ================= ESCAPE KEY ================= */
+
+document.addEventListener("keydown", function(event) {
+
+  if (event.key === "Escape") {
+    closeGame();
+  }
 
 });
 
