@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mango Web</title>
+<title>🥭 Mango Web</title>
 
 <style>
 * {
@@ -16,97 +16,93 @@ html {
 
 body {
   margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
   background: #000;
   color: #ff8c00;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* HEADER */
 header {
   background: #000;
   border-bottom: 2px solid #ff8c00;
-  padding: 20px;
-  text-align: center;
+  padding: 18px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-header h1 {
-  margin: 0 0 15px;
-  font-size: 42px;
-  color: #ff8c00;
+.logo {
+  font-size: 28px;
+  font-weight: bold;
 }
 
 nav {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
   gap: 10px;
 }
 
 nav a {
-  color: #000;
-  background: #ff8c00;
+  color: #ff8c00;
   text-decoration: none;
-  padding: 10px 18px;
+  padding: 9px 14px;
+  border: 1px solid #ff8c00;
   border-radius: 8px;
-  font-weight: bold;
+  transition: 0.2s;
 }
 
 nav a:hover {
-  background: #ffad42;
+  background: #ff8c00;
+  color: #000;
 }
 
 /* SEARCH */
-.search-container {
-  display: flex;
-  justify-content: center;
-  padding: 20px;
+.search-area {
+  text-align: center;
+  padding: 30px 15px 10px;
 }
 
-.search-container form {
-  display: flex;
-  width: min(700px, 95%);
-}
-
-.search-container input {
-  flex: 1;
+.search-area input {
+  width: min(600px, 90%);
   padding: 14px;
-  border: 2px solid #ff8c00;
-  border-right: none;
-  border-radius: 8px 0 0 8px;
   background: #111;
+  border: 2px solid #ff8c00;
+  border-radius: 10px;
   color: white;
   font-size: 16px;
   outline: none;
 }
 
-.search-container button {
-  padding: 14px 20px;
-  border: 2px solid #ff8c00;
-  border-radius: 0 8px 8px 0;
+.search-area button {
+  margin-left: 6px;
+  padding: 14px 18px;
   background: #ff8c00;
   color: #000;
+  border: none;
+  border-radius: 10px;
   font-weight: bold;
   cursor: pointer;
 }
 
 /* SECTIONS */
 section {
-  padding: 30px 20px;
-  max-width: 1200px;
-  margin: auto;
+  padding: 35px 25px;
 }
 
-section h2 {
-  font-size: 32px;
-  border-bottom: 2px solid #ff8c00;
+.section-title {
+  font-size: 30px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ff8c00;
   padding-bottom: 10px;
 }
 
 /* CARDS */
-.card-grid {
+.grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 18px;
 }
 
 .card {
@@ -114,181 +110,102 @@ section h2 {
   border: 2px solid #ff8c00;
   border-radius: 12px;
   padding: 20px;
-  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  background: #181818;
 }
 
 .card h3 {
-  margin-top: 0;
+  margin: 0 0 8px;
+  color: #ff8c00;
 }
 
 .card p {
-  color: #ddd;
+  color: #ccc;
+  margin: 0;
 }
 
-.card button,
-.card a {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 10px 16px;
-  background: #ff8c00;
-  color: #000;
-  border: none;
-  border-radius: 7px;
-  text-decoration: none;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.card button:hover,
-.card a:hover {
-  background: #ffad42;
-}
-
-/* MOVIES */
-.movie-card img {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-/* FOOTER */
-footer {
-  border-top: 2px solid #ff8c00;
-  text-align: center;
-  padding: 25px;
-  margin-top: 30px;
-}
-
-
-/* ==================================================
-   GAME PLAYER
-================================================== */
-
+/* GAME PLAYER */
 #gamePlayer {
   display: none;
-
   position: fixed;
   inset: 0;
-
-  width: 100vw;
-  height: 100vh;
-
-  z-index: 999999;
-
+  z-index: 99999;
   background: #000;
 }
-
-
-/* GAME BOX */
 
 .game-player-box {
   position: absolute;
-
   inset: 0;
-
-  width: 100%;
-  height: 100%;
-
   display: flex;
   flex-direction: column;
-
   background: #000;
-
-  overflow: hidden;
+  min-width: 0;
+  min-height: 0;
 }
 
-
-/* GAME HEADER */
-
+/* GAME PLAYER HEADER */
 .game-player-header {
-  flex: 0 0 60px;
-
-  height: 60px;
-
+  height: 58px;
+  flex: 0 0 58px;
   display: flex;
-
   align-items: center;
   justify-content: space-between;
-
-  padding: 8px 15px;
-
+  gap: 10px;
+  padding: 8px 14px;
   background: #000;
-
   border-bottom: 2px solid #ff8c00;
-
-  color: #ff8c00;
-
-  font-size: 22px;
-
-  font-weight: bold;
 }
 
+#gameTitle {
+  color: #ff8c00;
+  font-size: 20px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-/* BUTTONS */
-
-.game-controls {
+.game-buttons {
   display: flex;
   gap: 8px;
 }
 
-.game-button {
-  background: #ff8c00;
-
-  color: #000;
-
-  border: none;
-
+.game-buttons button {
+  border: 1px solid #ff8c00;
+  background: #000;
+  color: #ff8c00;
   border-radius: 7px;
-
-  padding: 9px 14px;
-
-  font-size: 14px;
-
-  font-weight: bold;
-
+  padding: 8px 12px;
   cursor: pointer;
+  font-weight: bold;
 }
 
-.game-button:hover {
-  background: #ffad42;
+.game-buttons button:hover {
+  background: #ff8c00;
+  color: #000;
 }
 
-
-/* ==================================================
-   GAME BOX
-================================================== */
-
+/* GAME AREA */
 .game-area {
-
   position: relative;
-
   flex: 1 1 auto;
-
   width: 100%;
-
-  height: calc(100vh - 60px);
-
+  height: calc(100vh - 58px);
   min-width: 0;
-
   min-height: 0;
-
   overflow: hidden;
-
   background: #000;
 }
 
-
-/* ==================================================
-   GAME IFRAME
-================================================== */
-
+/* THE ACTUAL GAME */
 #gameFrame {
-
   position: absolute;
-
-  top: 0;
-  left: 0;
+  inset: 0;
 
   display: block;
 
@@ -301,480 +218,303 @@ footer {
   max-width: none;
   max-height: none;
 
+  border: 0;
   margin: 0;
   padding: 0;
 
-  border: none;
-
   background: #000;
-
-  overflow: hidden;
 }
 
-
-/* ==================================================
-   FULLSCREEN
-================================================== */
-
-#gamePlayer:fullscreen {
-  width: 100vw;
-  height: 100vh;
+/* FULLSCREEN PLAYER */
+#gamePlayer.fullscreen-player {
+  background: #000;
 }
 
-#gamePlayer.game-fullscreen .game-player-header {
+#gamePlayer.fullscreen-player .game-player-header {
   display: none;
 }
 
-#gamePlayer.game-fullscreen .game-area {
+#gamePlayer.fullscreen-player .game-area {
   width: 100vw;
   height: 100vh;
 }
 
-#gamePlayer.game-fullscreen #gameFrame {
+#gamePlayer.fullscreen-player #gameFrame {
   width: 100vw !important;
   height: 100vh !important;
 }
 
+/* MOVIES / WEBSITES */
+.movie-card,
+.website-card {
+  cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 30px;
+  border-top: 1px solid #ff8c00;
+  color: #888;
+}
 
 /* MOBILE */
+@media (max-width: 700px) {
+  header {
+    flex-direction: column;
+    gap: 15px;
+  }
 
-@media (max-width: 600px) {
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  section {
+    padding: 25px 15px;
+  }
 
   .game-player-header {
-    flex-basis: 54px;
     height: 54px;
-    font-size: 18px;
+    flex-basis: 54px;
   }
 
   .game-area {
     height: calc(100vh - 54px);
   }
 
-  .game-button {
-    padding: 7px 10px;
+  #gameTitle {
+    font-size: 16px;
+  }
+
+  .game-buttons button {
+    padding: 7px 9px;
     font-size: 12px;
   }
 }
 </style>
 </head>
 
-
 <body>
 
-<!-- HEADER -->
-
 <header>
-
-  <h1>🥭 Mango Web</h1>
+  <div class="logo">🥭 Mango Web</div>
 
   <nav>
     <a href="#games">Games</a>
     <a href="#movies">Movies</a>
     <a href="#websites">Websites</a>
   </nav>
-
 </header>
 
-
-<!-- SEARCH -->
-
-<div class="search-container">
-
+<div class="search-area">
   <form onsubmit="searchMango(event)">
-
     <input
       id="searchInput"
       type="text"
       placeholder="Search Mango Web..."
-      autocomplete="off">
-
-    <button type="submit">
-      Search
-    </button>
-
+      autocomplete="off"
+    >
+    <button type="submit">Search</button>
   </form>
-
 </div>
 
-
-<!-- ==================================================
-     GAMES
-================================================== -->
+<!-- ================= GAMES ================= -->
 
 <section id="games">
 
-  <h2>🎮 Games</h2>
+  <div class="section-title">🎮 Games</div>
 
-  <div class="card-grid">
+  <div class="grid">
 
-
-    <div class="card">
-
+    <div class="card" onclick="openGame(
+      'Golf Orbit',
+      'https://www.bubbleshooter.net/embed.php?id=3041'
+    )">
       <h3>Golf Orbit</h3>
-
-      <p>Play Golf Orbit.</p>
-
-      <button onclick="playGame(
-        'Golf Orbit',
-        'https://duck.exampredictor.org/class/golf-orbit'
-      )">
-        Play
-      </button>
-
+      <p>Play Golf Orbit inside Mango Web.</p>
     </div>
 
-
-    <div class="card">
-
+    <div class="card" onclick="openGame(
+      'Baseball Bros',
+      'https://duck.exampredictor.org/class/baseball-bros'
+    )">
       <h3>Baseball Bros</h3>
-
-      <p>Play Baseball Bros.</p>
-
-      <button onclick="playGame(
-        'Baseball Bros',
-        'https://duck.exampredictor.org/class/baseball-bros'
-      )">
-        Play
-      </button>
-
+      <p>Play Baseball Bros inside Mango Web.</p>
     </div>
 
-
-    <div class="card">
-
+    <div class="card" onclick="openGame(
+      'Basket Bros',
+      'https://duck.exampredictor.org/class/basket-bros'
+    )">
       <h3>Basket Bros</h3>
-
-      <p>Play Basket Bros.</p>
-
-      <button onclick="playGame(
-        'Basket Bros',
-        'https://duck.exampredictor.org/class/basket-bros'
-      )">
-        Play
-      </button>
-
+      <p>Play Basket Bros inside Mango Web.</p>
     </div>
 
-
-    <div class="card">
-
+    <div class="card" onclick="openGame(
+      'Basketball Legends',
+      'https://duck.exampredictor.org/class/basketball-legends'
+    )">
       <h3>Basketball Legends</h3>
-
-      <p>Play Basketball Legends.</p>
-
-      <button onclick="playGame(
-        'Basketball Legends',
-        'https://duck.exampredictor.org/class/basketball-legends'
-      )">
-        Play
-      </button>
-
+      <p>Play Basketball Legends inside Mango Web.</p>
     </div>
 
-
-    <div class="card">
-
+    <div class="card" onclick="openGame(
+      'Football Bros',
+      'https://fb.vtune.net/'
+    )">
       <h3>Football Bros</h3>
-
-      <p>Play Football Bros.</p>
-
-      <button onclick="playGame(
-        'Football Bros',
-        'https://fb.vtune.net/'
-      )">
-        Play
-      </button>
-
+      <p>Play Football Bros inside Mango Web.</p>
     </div>
 
-
-    <div class="card">
-
+    <div class="card" onclick="openGame(
+      'Fireboy and Watergirl',
+      'https://www.coolmathgames.com/0-fireboy-watergirl-2-light-temple#immersiveModal'
+    )">
       <h3>Fireboy and Watergirl</h3>
-
-      <p>Play Fireboy and Watergirl.</p>
-
-      <button onclick="playGame(
-        'Fireboy and Watergirl',
-        'https://www.coolmathgames.com/0-fireboy-watergirl-2-light-temple#immersiveModal'
-      )">
-        Play
-      </button>
-
+      <p>Play Fireboy and Watergirl inside Mango Web.</p>
     </div>
 
-
-    <div class="card">
-
+    <div class="card" onclick="openGame(
+      'Race',
+      'https://sites.google.com/view/drive-u-7-home-10/survival-race/race-fullscreen?authuser=0'
+    )">
       <h3>Race</h3>
-
-      <p>Play Race.</p>
-
-      <button onclick="playGame(
-        'Race',
-        'https://sites.google.com/view/drive-u-7-home-10/survival-race/race-fullscreen?authuser=0'
-      )">
-        Play
-      </button>
-
+      <p>Play Race inside Mango Web.</p>
     </div>
 
-
-    <div class="card">
-
+    <div class="card" onclick="openGame(
+      'Dune Dash',
+      'https://sites.google.com/view/drive-u-7-home-10/dune-dash/dune-dash-fs?authuser=0'
+    )">
       <h3>Dune Dash</h3>
-
-      <p>Play Dune Dash.</p>
-
-      <button onclick="playGame(
-        'Dune Dash',
-        'https://sites.google.com/view/drive-u-7-home-10/dune-dash/dune-dash-fs?authuser=0'
-      )">
-        Play
-      </button>
-
+      <p>Play Dune Dash inside Mango Web.</p>
     </div>
 
-
-    <div class="card">
-
+    <div class="card" onclick="openGame(
+      'OVO',
+      'https://www.bubbleshooter.net/embed.php?id=1366'
+    )">
       <h3>OVO</h3>
-
-      <p>Play OVO.</p>
-
-      <button onclick="playGame(
-        'OVO',
-        'https://duck.exampredictor.org/class/ovo'
-      )">
-        Play
-      </button>
-
+      <p>Play OVO inside Mango Web.</p>
     </div>
 
-
-    <div class="card">
-
+    <div class="card" onclick="openGame(
+      'Run 3',
+      'https://www.run3.org/game'
+    )">
       <h3>Run 3</h3>
-
-      <p>Play Run 3.</p>
-
-      <button onclick="playGame(
-        'Run 3',
-        'https://www.run3.org/game'
-      )">
-        Play
-      </button>
-
+      <p>Play Run 3 inside Mango Web.</p>
     </div>
 
   </div>
-
 </section>
 
-
-<!-- ==================================================
-     MOVIES
-================================================== -->
+<!-- ================= MOVIES ================= -->
 
 <section id="movies">
 
-  <h2>🎬 Movies</h2>
+  <div class="section-title">🎬 Movies</div>
 
-  <div class="card-grid">
+  <div class="grid">
 
-
-    <div class="card">
+    <div class="card movie-card"
+      onclick="window.open('https://stellar.gdn/movie/969681','_blank')">
       <h3>Spider-Man: Brand New Day</h3>
-
-      <a
-        href="https://stellar.gdn/movie/969681"
-        target="_blank"
-        rel="noopener">
-        Open
-      </a>
+      <p>Open movie</p>
     </div>
 
-
-    <div class="card">
+    <div class="card movie-card"
+      onclick="window.open('https://stellar.gdn/movie/1297842','_blank')">
       <h3>GOAT</h3>
-
-      <a
-        href="https://stellar.gdn/movie/1297842"
-        target="_blank"
-        rel="noopener">
-        Open
-      </a>
+      <p>Open movie</p>
     </div>
 
-
-    <div class="card">
+    <div class="card movie-card"
+      onclick="window.open('https://stellar.gdn/movie/550988','_blank')">
       <h3>Free Guy</h3>
-
-      <a
-        href="https://stellar.gdn/movie/550988"
-        target="_blank"
-        rel="noopener">
-        Open
-      </a>
+      <p>Open movie</p>
     </div>
 
-
-    <div class="card">
+    <div class="card movie-card"
+      onclick="window.open('https://stellar.gdn/movie/8193','_blank')">
       <h3>Napoleon Dynamite</h3>
-
-      <a
-        href="https://stellar.gdn/movie/8193"
-        target="_blank"
-        rel="noopener">
-        Open
-      </a>
+      <p>Open movie</p>
     </div>
 
-
-    <div class="card">
+    <div class="card movie-card"
+      onclick="window.open('https://stellar.gdn/movie/105','_blank')">
       <h3>Back to the Future</h3>
-
-      <a
-        href="https://stellar.gdn/movie/105"
-        target="_blank"
-        rel="noopener">
-        Open
-      </a>
+      <p>Open movie</p>
     </div>
 
-
-    <div class="card">
+    <div class="card movie-card"
+      onclick="window.open('https://stellar.gdn/movie/920','_blank')">
       <h3>Cars</h3>
-
-      <a
-        href="https://stellar.gdn/movie/920"
-        target="_blank"
-        rel="noopener">
-        Open
-      </a>
+      <p>Open movie</p>
     </div>
 
-
-    <div class="card">
+    <div class="card movie-card"
+      onclick="window.open('https://stellar.gdn/movie/324849','_blank')">
       <h3>The LEGO Batman Movie</h3>
-
-      <a
-        href="https://stellar.gdn/movie/324849"
-        target="_blank"
-        rel="noopener">
-        Open
-      </a>
+      <p>Open movie</p>
     </div>
 
-
-    <div class="card">
+    <div class="card movie-card"
+      onclick="window.open('https://stellar.gdn/movie/629542','_blank')">
       <h3>The Bad Guys</h3>
-
-      <a
-        href="https://stellar.gdn/movie/629542"
-        target="_blank"
-        rel="noopener">
-        Open
-      </a>
+      <p>Open movie</p>
     </div>
 
-
-    <div class="card">
+    <div class="card movie-card"
+      onclick="window.open('https://stellar.gdn/movie/14817','_blank')">
       <h3>Good Burger</h3>
-
-      <a
-        href="https://stellar.gdn/movie/14817"
-        target="_blank"
-        rel="noopener">
-        Open
-      </a>
+      <p>Open movie</p>
     </div>
 
-
-    <div class="card">
+    <div class="card movie-card"
+      onclick="window.open('https://stellar.gdn/movie/950387','_blank')">
       <h3>A Minecraft Movie</h3>
-
-      <a
-        href="https://stellar.gdn/movie/950387"
-        target="_blank"
-        rel="noopener">
-        Open
-      </a>
+      <p>Open movie</p>
     </div>
 
-
-    <div class="card">
+    <div class="card movie-card"
+      onclick="window.open('https://stellar.gdn/movie/268531','_blank')">
       <h3>Captain Underpants</h3>
-
-      <a
-        href="https://stellar.gdn/movie/268531"
-        target="_blank"
-        rel="noopener">
-        Open
-      </a>
+      <p>Open movie</p>
     </div>
 
   </div>
-
 </section>
 
-
-<!-- ==================================================
-     WEBSITES
-================================================== -->
+<!-- ================= WEBSITES ================= -->
 
 <section id="websites">
 
-  <h2>🌐 Websites</h2>
+  <div class="section-title">🌐 Websites</div>
 
-  <div class="card-grid">
+  <div class="grid">
 
-    <div class="card">
-
+    <div class="card website-card"
+      onclick="window.open('https://www.google.com','_blank')">
       <h3>Google</h3>
-
-      <p>Search the web.</p>
-
-      <a
-        href="https://www.google.com"
-        target="_blank"
-        rel="noopener">
-        Open
-      </a>
-
+      <p>Open Google</p>
     </div>
 
-
-    <div class="card">
-
+    <div class="card website-card"
+      onclick="window.open('https://www.youtube.com','_blank')">
       <h3>YouTube</h3>
-
-      <p>Watch videos.</p>
-
-      <a
-        href="https://www.youtube.com"
-        target="_blank"
-        rel="noopener">
-        Open
-      </a>
-
+      <p>Open YouTube</p>
     </div>
 
   </div>
-
 </section>
-
-
-<!-- FOOTER -->
 
 <footer>
   🥭 Mango Web
 </footer>
 
-
-<!-- ==================================================
-     GAME PLAYER
-================================================== -->
+<!-- ================= GAME PLAYER ================= -->
 
 <div id="gamePlayer">
 
@@ -786,19 +526,13 @@ footer {
         Game
       </div>
 
-      <div class="game-controls">
+      <div class="game-buttons">
 
-        <button
-          class="game-button"
-          type="button"
-          onclick="fullscreenGame()">
+        <button onclick="fullscreenGame()">
           ⛶ Full Screen
         </button>
 
-        <button
-          class="game-button"
-          type="button"
-          onclick="closeGame()">
+        <button onclick="closeGame()">
           ✕ Close
         </button>
 
@@ -806,14 +540,15 @@ footer {
 
     </div>
 
-
     <div class="game-area">
 
       <iframe
         id="gameFrame"
+        src="about:blank"
         title="Mango Web Game"
-        allow="fullscreen; autoplay; gamepad"
+        allow="fullscreen; autoplay; gamepad; pointer-lock"
         allowfullscreen
+        frameborder="0"
         scrolling="no">
       </iframe>
 
@@ -823,113 +558,83 @@ footer {
 
 </div>
 
-
 <script>
 
-/* ==================================================
-   SEARCH
-================================================== */
+/* ================= SEARCH ================= */
 
 function searchMango(event) {
-
   event.preventDefault();
 
-  const input =
+  const searchInput =
     document.getElementById("searchInput");
 
-  const text =
-    input.value.trim();
+  const searchText =
+    searchInput.value.trim();
 
-  if (!text) return;
+  if (!searchText) return;
 
-  const encoded =
-    btoa(
-      unescape(
-        encodeURIComponent(text)
-      )
-    );
+  const encodedSearch =
+    btoa(unescape(encodeURIComponent(searchText)));
 
   window.location.href =
-    "https://3e3c.org/search?query=" + encoded;
+    "https://3e3c.org/search?query=" + encodedSearch;
 }
 
 
-/* ==================================================
-   OPEN GAME
-================================================== */
+/* ================= GAME PLAYER ================= */
 
-function playGame(title, url) {
+const gamePlayer =
+  document.getElementById("gamePlayer");
 
-  const player =
-    document.getElementById("gamePlayer");
+const gameFrame =
+  document.getElementById("gameFrame");
 
-  const frame =
-    document.getElementById("gameFrame");
-
-  const titleBox =
-    document.getElementById("gameTitle");
+const gameTitle =
+  document.getElementById("gameTitle");
 
 
-  titleBox.textContent = title;
+function openGame(title, url) {
 
-  frame.src = url;
+  gameTitle.textContent = title;
 
-  player.classList.remove("game-fullscreen");
+  gameFrame.src = url;
 
-  player.style.display = "block";
+  gamePlayer.style.display = "block";
 
   document.body.style.overflow = "hidden";
+
 }
 
 
-/* ==================================================
-   FULLSCREEN
-================================================== */
+function closeGame() {
+
+  gameFrame.src = "about:blank";
+
+  gamePlayer.classList.remove("fullscreen-player");
+
+  gamePlayer.style.display = "none";
+
+  document.body.style.overflow = "";
+
+}
+
+
+/* ================= FULL SCREEN ================= */
 
 async function fullscreenGame() {
 
-  const player =
-    document.getElementById("gamePlayer");
+  const gameBox =
+    document.querySelector(".game-player-box");
 
   try {
 
     if (!document.fullscreenElement) {
 
-      await player.requestFullscreen();
+      await gameBox.requestFullscreen();
 
-      player.classList.add(
-        "game-fullscreen"
-      );
+      gamePlayer.classList.add("fullscreen-player");
 
-    }
-
-  } catch (error) {
-
-    console.log(
-      "Fullscreen unavailable:",
-      error
-    );
-
-  }
-}
-
-
-/* ==================================================
-   CLOSE GAME
-================================================== */
-
-async function closeGame() {
-
-  const player =
-    document.getElementById("gamePlayer");
-
-  const frame =
-    document.getElementById("gameFrame");
-
-
-  try {
-
-    if (document.fullscreenElement) {
+    } else {
 
       await document.exitFullscreen();
 
@@ -937,43 +642,24 @@ async function closeGame() {
 
   } catch (error) {
 
-    console.log(error);
+    console.log("Fullscreen unavailable:", error);
 
   }
 
-
-  frame.src = "";
-
-  player.classList.remove(
-    "game-fullscreen"
-  );
-
-  player.style.display = "none";
-
-  document.body.style.overflow = "";
 }
 
 
-/* ==================================================
-   ESCAPE KEY
-================================================== */
+/* Keep Mango Web layout correct when fullscreen ends */
 
 document.addEventListener(
-  "keydown",
-  function(event) {
+  "fullscreenchange",
+  function() {
 
-    if (event.key === "Escape") {
+    if (!document.fullscreenElement) {
 
-      const player =
-        document.getElementById("gamePlayer");
-
-      if (
-        player.style.display === "block"
-      ) {
-
-        closeGame();
-
-      }
+      gamePlayer.classList.remove(
+        "fullscreen-player"
+      );
 
     }
 
@@ -981,22 +667,19 @@ document.addEventListener(
 );
 
 
-/* ==================================================
-   FULLSCREEN CHANGE
-================================================== */
+/* ESC closes fullscreen but leaves game open */
 
 document.addEventListener(
-  "fullscreenchange",
-  function() {
+  "keydown",
+  function(event) {
 
-    const player =
-      document.getElementById("gamePlayer");
+    if (
+      event.key === "Escape" &&
+      gamePlayer.style.display === "block" &&
+      document.fullscreenElement
+    ) {
 
-    if (!document.fullscreenElement) {
-
-      player.classList.remove(
-        "game-fullscreen"
-      );
+      document.exitFullscreen();
 
     }
 
