@@ -3,335 +3,326 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>🥭 Mango Web</title>
 
 <style>
-  * {
-    box-sizing: border-box;
-  }
+* {
+  box-sizing: border-box;
+}
 
-  html {
-    scroll-behavior: smooth;
-  }
+html {
+  scroll-behavior: smooth;
+}
 
-  body {
-    margin: 0;
-    background: #000;
-    color: #ff8c00;
-    font-family: Arial, Helvetica, sans-serif;
-  }
+body {
+  margin: 0;
+  background: #000;
+  color: #ff8c00;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-  /* =========================
-     HEADER
-     ========================= */
+/* =========================
+   HEADER
+========================= */
 
-  header {
-    background: #000;
-    border-bottom: 2px solid #ff8c00;
-    padding: 22px 20px;
-    text-align: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
+header {
+  background: #000;
+  border-bottom: 2px solid #ff8c00;
+  padding: 22px 20px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header h1 {
+  margin: 0 0 15px;
+  font-size: 38px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: #ff8c00;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 9px 15px;
+  border: 1px solid #ff8c00;
+  border-radius: 8px;
+}
+
+nav a:hover {
+  background: #ff8c00;
+  color: #000;
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-area {
+  max-width: 800px;
+  margin: 25px auto;
+  padding: 0 20px;
+}
+
+.search-area form {
+  display: flex;
+  gap: 10px;
+}
+
+.search-area input {
+  flex: 1;
+  padding: 14px;
+  border-radius: 8px;
+  border: 2px solid #ff8c00;
+  background: #111;
+  color: white;
+  font-size: 16px;
+  outline: none;
+}
+
+.search-area button {
+  padding: 14px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #ff8c00;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 45px 20px;
+}
+
+section h2 {
+  font-size: 30px;
+  border-bottom: 2px solid #ff8c00;
+  padding-bottom: 10px;
+  margin-bottom: 25px;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  background: #111;
+  border: 2px solid #ff8c00;
+  border-radius: 12px;
+  padding: 20px;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  background: #181818;
+}
+
+.card h3 {
+  margin: 0 0 10px;
+  font-size: 21px;
+}
+
+.card p {
+  margin: 0 0 15px;
+  color: #ddd;
+}
+
+.card button,
+.card a {
+  display: inline-block;
+  width: 100%;
+  padding: 11px;
+  border: none;
+  border-radius: 8px;
+  background: #ff8c00;
+  color: #000;
+  text-decoration: none;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.card button:hover,
+.card a:hover {
+  background: #ffa733;
+}
+
+/* =========================
+   GAME PLAYER
+========================= */
+
+#gamePlayer {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #000;
+}
+
+.game-player-box {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+  min-height: 0;
+
+  background: #000;
+}
+
+.game-player-header {
+  flex: 0 0 64px;
+  height: 64px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 10px 20px;
+
+  background: #000;
+  border-bottom: 2px solid #ff8c00;
+}
+
+.game-player-header h2 {
+  margin: 0;
+  color: #ff8c00;
+  font-size: 26px;
+}
+
+.game-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.game-button {
+  background: #ff8c00;
+  color: #000;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.game-button:hover {
+  background: #ffa733;
+}
+
+/* GAME TAKES ALL REMAINING SPACE */
+
+.game-frame-container {
+  flex: 1 1 auto;
+  width: 100%;
+  height: calc(100vh - 64px);
+
+  min-width: 0;
+  min-height: 0;
+
+  overflow: hidden;
+  background: #000;
+}
+
+#gameFrame {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  min-width: 100%;
+  min-height: 100%;
+
+  border: 0;
+  margin: 0;
+  padding: 0;
+
+  background: #000;
+}
+
+/* ACTUAL IFRAME FULLSCREEN */
+
+#gameFrame:fullscreen {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  text-align: center;
+  padding: 35px 20px;
+  border-top: 2px solid #ff8c00;
+  margin-top: 30px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
 
   header h1 {
-    margin: 0 0 15px;
-    font-size: 38px;
-  }
-
-  nav {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  nav a {
-    color: #ff8c00;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 9px 15px;
-    border: 1px solid #ff8c00;
-    border-radius: 8px;
-  }
-
-  nav a:hover {
-    background: #ff8c00;
-    color: #000;
-  }
-
-  /* =========================
-     SEARCH
-     ========================= */
-
-  .search-area {
-    max-width: 800px;
-    margin: 25px auto;
-    padding: 0 20px;
+    font-size: 30px;
   }
 
   .search-area form {
-    display: flex;
-    gap: 10px;
-  }
-
-  .search-area input {
-    flex: 1;
-    padding: 14px;
-    border-radius: 8px;
-    border: 2px solid #ff8c00;
-    background: #111;
-    color: white;
-    font-size: 16px;
-    outline: none;
-  }
-
-  .search-area button {
-    padding: 14px 20px;
-    border: none;
-    border-radius: 8px;
-    background: #ff8c00;
-    color: #000;
-    font-weight: bold;
-    cursor: pointer;
-  }
-
-  /* =========================
-     SECTIONS
-     ========================= */
-
-  section {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 45px 20px;
-  }
-
-  section h2 {
-    font-size: 30px;
-    border-bottom: 2px solid #ff8c00;
-    padding-bottom: 10px;
-    margin-bottom: 25px;
-  }
-
-  /* =========================
-     CARDS
-     ========================= */
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-    gap: 18px;
-  }
-
-  .card {
-    background: #111;
-    border: 2px solid #ff8c00;
-    border-radius: 12px;
-    padding: 20px;
-    min-height: 120px;
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    transition: 0.2s;
-  }
-
-  .card:hover {
-    transform: translateY(-3px);
-    background: #181818;
-  }
-
-  .card h3 {
-    margin: 0 0 10px;
-    font-size: 21px;
-  }
-
-  .card p {
-    margin: 0 0 15px;
-    color: #ddd;
-  }
-
-  .card button,
-  .card a {
-    display: inline-block;
-    width: 100%;
-    padding: 11px;
-    border: none;
-    border-radius: 8px;
-    background: #ff8c00;
-    color: #000;
-    text-decoration: none;
-    text-align: center;
-    font-weight: bold;
-    cursor: pointer;
-  }
-
-  .card button:hover,
-  .card a:hover {
-    background: #ffa733;
-  }
-
-  /* =========================
-     GAME PLAYER
-     ========================= */
-
-  #gamePlayer {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 99999;
-    background: #000;
-  }
-
-  .game-player-box {
-    position: absolute;
-    inset: 0;
-
-    display: flex;
-    flex-direction: column;
-
-    min-width: 0;
-    min-height: 0;
-
-    background: #000;
   }
 
   .game-player-header {
-    flex: 0 0 64px;
-    height: 64px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 10px 20px;
-
-    background: #000;
-    border-bottom: 2px solid #ff8c00;
+    flex-basis: 58px;
+    height: 58px;
+    padding: 8px 12px;
   }
 
   .game-player-header h2 {
-    margin: 0;
-    color: #ff8c00;
-    font-size: 26px;
-  }
-
-  .game-controls {
-    display: flex;
-    gap: 8px;
+    font-size: 19px;
   }
 
   .game-button {
-    background: #ff8c00;
-    color: #000;
-    border: none;
-    padding: 10px 16px;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 15px;
-  }
-
-  .game-button:hover {
-    background: #ffa733;
+    padding: 8px 11px;
+    font-size: 13px;
   }
 
   .game-frame-container {
-    flex: 1 1 auto;
-
-    width: 100%;
-    height: calc(100vh - 64px);
-
-    min-width: 0;
-    min-height: 0;
-
-    overflow: hidden;
-    background: #000;
+    height: calc(100vh - 58px);
   }
-
-  #gameFrame {
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    min-width: 100%;
-    min-height: 100%;
-
-    border: 0;
-    margin: 0;
-    padding: 0;
-
-    background: #000;
-  }
-
-  /* When the GAME itself goes fullscreen */
-  #gameFrame:fullscreen {
-    width: 100vw;
-    height: 100vh;
-    background: #000;
-  }
-
-  /* =========================
-     FOOTER
-     ========================= */
-
-  footer {
-    text-align: center;
-    padding: 35px 20px;
-    border-top: 2px solid #ff8c00;
-    margin-top: 30px;
-  }
-
-  footer p {
-    margin: 0;
-  }
-
-  /* =========================
-     MOBILE
-     ========================= */
-
-  @media (max-width: 600px) {
-
-    header h1 {
-      font-size: 30px;
-    }
-
-    .search-area form {
-      flex-direction: column;
-    }
-
-    .game-player-header {
-      flex-basis: 58px;
-      height: 58px;
-      padding: 8px 12px;
-    }
-
-    .game-player-header h2 {
-      font-size: 19px;
-    }
-
-    .game-button {
-      padding: 8px 11px;
-      font-size: 13px;
-    }
-
-    .game-frame-container {
-      height: calc(100vh - 58px);
-    }
-  }
+}
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     HEADER
-     ========================= -->
-
 <header>
-
   <h1>🥭 Mango Web</h1>
 
   <nav>
@@ -339,13 +330,10 @@
     <a href="#movies">Movies</a>
     <a href="#websites">Websites</a>
   </nav>
-
 </header>
 
 
-<!-- =========================
-     SEARCH
-     ========================= -->
+<!-- SEARCH -->
 
 <div class="search-area">
 
@@ -369,7 +357,7 @@
 
 <!-- =========================
      GAMES
-     ========================= -->
+========================= -->
 
 <section id="games">
 
@@ -377,103 +365,79 @@
 
   <div class="grid">
 
-
     <!-- GOLF ORBIT -->
-
     <div class="card">
-
       <h3>Golf Orbit</h3>
-
       <p>Golf game</p>
 
       <button onclick="playGame(
         'Golf Orbit',
-        'https://duck.exampredictor.org/class/golf-orbit'
+        'https://www.y8.com/games/golf_orbit'
       )">
         Play
       </button>
-
     </div>
 
 
     <!-- BASEBALL BROS -->
-
     <div class="card">
-
       <h3>Baseball Bros</h3>
-
       <p>Baseball game</p>
 
       <button onclick="playGame(
         'Baseball Bros',
-        'https://duck.exampredictor.org/class/baseball-bros'
+        'https://basketballbrosgame.org/baseball-bros'
       )">
         Play
       </button>
-
     </div>
 
 
     <!-- BASKET BROS -->
-
     <div class="card">
-
       <h3>Basket Bros</h3>
-
       <p>Basketball game</p>
 
       <button onclick="playGame(
         'Basket Bros',
-        'https://duck.exampredictor.org/class/basket-bros'
+        'https://bunagames.com/playgame/basket-bros/'
       )">
         Play
       </button>
-
     </div>
 
 
     <!-- BASKETBALL LEGENDS -->
-
     <div class="card">
-
       <h3>Basketball Legends</h3>
-
       <p>Basketball game</p>
 
       <button onclick="playGame(
         'Basketball Legends',
-        'https://duck.exampredictor.org/class/basketball-legends'
+        'https://www.y8.com/games/basketball_legends'
       )">
         Play
       </button>
-
     </div>
 
 
     <!-- FOOTBALL BROS -->
-
     <div class="card">
-
       <h3>Football Bros</h3>
-
       <p>Football game</p>
 
       <button onclick="playGame(
         'Football Bros',
-        'https://fb.vtune.net/'
+        'https://fb.dunkbros.com/'
       )">
         Play
       </button>
-
     </div>
 
 
     <!-- FIREBOY AND WATERGIRL -->
-
     <div class="card">
-
       <h3>Fireboy and Watergirl</h3>
-
       <p>Adventure game</p>
 
       <button onclick="playGame(
@@ -482,16 +446,12 @@
       )">
         Play
       </button>
-
     </div>
 
 
     <!-- RACE -->
-
     <div class="card">
-
       <h3>Race</h3>
-
       <p>Racing game</p>
 
       <button onclick="playGame(
@@ -500,16 +460,12 @@
       )">
         Play
       </button>
-
     </div>
 
 
     <!-- DUNE DASH -->
-
     <div class="card">
-
       <h3>Dune Dash</h3>
-
       <p>Driving game</p>
 
       <button onclick="playGame(
@@ -518,34 +474,26 @@
       )">
         Play
       </button>
-
     </div>
 
 
     <!-- OVO -->
-
     <div class="card">
-
       <h3>OVO</h3>
-
       <p>Platform game</p>
 
       <button onclick="playGame(
         'OVO',
-        'https://duck.exampredictor.org/class/ovo'
+        'https://www.y8.com/games/ovo'
       )">
         Play
       </button>
-
     </div>
 
 
     <!-- RUN 3 -->
-
     <div class="card">
-
       <h3>Run 3</h3>
-
       <p>Running game</p>
 
       <button onclick="playGame(
@@ -554,9 +502,7 @@
       )">
         Play
       </button>
-
     </div>
-
 
   </div>
 
@@ -565,7 +511,7 @@
 
 <!-- =========================
      MOVIES
-     ========================= -->
+========================= -->
 
 <section id="movies">
 
@@ -573,138 +519,115 @@
 
   <div class="grid">
 
-
     <div class="card">
       <h3>Spider-Man: Brand New Day</h3>
       <p>Movie</p>
-      <a
-        href="https://stellar.gdn/movie/969681"
-        target="_blank"
-        rel="noopener">
+      <a href="https://stellar.gdn/movie/969681"
+         target="_blank"
+         rel="noopener">
         Open
       </a>
     </div>
-
 
     <div class="card">
       <h3>GOAT</h3>
       <p>Movie</p>
-      <a
-        href="https://stellar.gdn/movie/1297842"
-        target="_blank"
-        rel="noopener">
+      <a href="https://stellar.gdn/movie/1297842"
+         target="_blank"
+         rel="noopener">
         Open
       </a>
     </div>
-
 
     <div class="card">
       <h3>Free Guy</h3>
       <p>Movie</p>
-      <a
-        href="https://stellar.gdn/movie/550988"
-        target="_blank"
-        rel="noopener">
+      <a href="https://stellar.gdn/movie/550988"
+         target="_blank"
+         rel="noopener">
         Open
       </a>
     </div>
-
 
     <div class="card">
       <h3>Napoleon Dynamite</h3>
       <p>Movie</p>
-      <a
-        href="https://stellar.gdn/movie/8193"
-        target="_blank"
-        rel="noopener">
+      <a href="https://stellar.gdn/movie/8193"
+         target="_blank"
+         rel="noopener">
         Open
       </a>
     </div>
-
 
     <div class="card">
       <h3>Back to the Future</h3>
       <p>Movie</p>
-      <a
-        href="https://stellar.gdn/movie/105"
-        target="_blank"
-        rel="noopener">
+      <a href="https://stellar.gdn/movie/105"
+         target="_blank"
+         rel="noopener">
         Open
       </a>
     </div>
-
 
     <div class="card">
       <h3>Cars</h3>
       <p>Movie</p>
-      <a
-        href="https://stellar.gdn/movie/920"
-        target="_blank"
-        rel="noopener">
+      <a href="https://stellar.gdn/movie/920"
+         target="_blank"
+         rel="noopener">
         Open
       </a>
     </div>
-
 
     <div class="card">
       <h3>The LEGO Batman Movie</h3>
       <p>Movie</p>
-      <a
-        href="https://stellar.gdn/movie/324849"
-        target="_blank"
-        rel="noopener">
+      <a href="https://stellar.gdn/movie/324849"
+         target="_blank"
+         rel="noopener">
         Open
       </a>
     </div>
-
 
     <div class="card">
       <h3>The Bad Guys</h3>
       <p>Movie</p>
-      <a
-        href="https://stellar.gdn/movie/629542"
-        target="_blank"
-        rel="noopener">
+      <a href="https://stellar.gdn/movie/629542"
+         target="_blank"
+         rel="noopener">
         Open
       </a>
     </div>
-
 
     <div class="card">
       <h3>Good Burger</h3>
       <p>Movie</p>
-      <a
-        href="https://stellar.gdn/movie/14817"
-        target="_blank"
-        rel="noopener">
+      <a href="https://stellar.gdn/movie/14817"
+         target="_blank"
+         rel="noopener">
         Open
       </a>
     </div>
-
 
     <div class="card">
       <h3>A Minecraft Movie</h3>
       <p>Movie</p>
-      <a
-        href="https://stellar.gdn/movie/950387"
-        target="_blank"
-        rel="noopener">
+      <a href="https://stellar.gdn/movie/950387"
+         target="_blank"
+         rel="noopener">
         Open
       </a>
     </div>
-
 
     <div class="card">
       <h3>Captain Underpants</h3>
       <p>Movie</p>
-      <a
-        href="https://stellar.gdn/movie/268531"
-        target="_blank"
-        rel="noopener">
+      <a href="https://stellar.gdn/movie/268531"
+         target="_blank"
+         rel="noopener">
         Open
       </a>
     </div>
-
 
   </div>
 
@@ -713,7 +636,7 @@
 
 <!-- =========================
      WEBSITES
-     ========================= -->
+========================= -->
 
 <section id="websites">
 
@@ -721,58 +644,41 @@
 
   <div class="grid">
 
-
     <div class="card">
-
       <h3>Google</h3>
-
       <p>Search the web</p>
 
-      <a
-        href="https://www.google.com"
-        target="_blank"
-        rel="noopener">
+      <a href="https://www.google.com"
+         target="_blank"
+         rel="noopener">
         Open
       </a>
-
     </div>
-
 
     <div class="card">
-
       <h3>YouTube</h3>
-
       <p>Watch videos</p>
 
-      <a
-        href="https://www.youtube.com"
-        target="_blank"
-        rel="noopener">
+      <a href="https://www.youtube.com"
+         target="_blank"
+         rel="noopener">
         Open
       </a>
-
     </div>
-
 
   </div>
 
 </section>
 
 
-<!-- =========================
-     FOOTER
-     ========================= -->
-
 <footer>
-
   <p>🥭 Mango Web</p>
-
 </footer>
 
 
 <!-- =========================
      GAME PLAYER
-     ========================= -->
+========================= -->
 
 <div id="gamePlayer">
 
@@ -819,158 +725,144 @@
 
 <script>
 
-  /* =========================
-     OPEN GAME
-     ========================= */
+/* =========================
+   OPEN GAME
+========================= */
 
-  function playGame(title, url) {
+function playGame(title, url) {
 
-    const player =
-      document.getElementById("gamePlayer");
+  const player =
+    document.getElementById("gamePlayer");
 
-    const frame =
-      document.getElementById("gameFrame");
+  const frame =
+    document.getElementById("gameFrame");
 
-    const titleBox =
-      document.getElementById("gameTitle");
+  const titleBox =
+    document.getElementById("gameTitle");
 
+  titleBox.textContent = title;
 
-    titleBox.textContent = title;
+  frame.src = url;
 
-    frame.src = url;
+  player.style.display = "block";
 
-    player.style.display = "block";
-
-    document.body.style.overflow = "hidden";
-  }
-
-
-  /* =========================
-     FULLSCREEN GAME
-     ========================= */
-
-  async function fullscreenGame() {
-
-    const frame =
-      document.getElementById("gameFrame");
-
-    try {
-
-      if (frame.requestFullscreen) {
-
-        await frame.requestFullscreen();
-
-      }
-
-    } catch (error) {
-
-      console.log(
-        "Fullscreen was not available.",
-        error
-      );
-
-    }
-  }
+  document.body.style.overflow = "hidden";
+}
 
 
-  /* =========================
-     CLOSE GAME
-     ========================= */
+/* =========================
+   FULLSCREEN
+========================= */
 
-  async function closeGame() {
+async function fullscreenGame() {
 
-    const player =
-      document.getElementById("gamePlayer");
+  const frame =
+    document.getElementById("gameFrame");
 
-    const frame =
-      document.getElementById("gameFrame");
+  try {
 
-
-    try {
-
-      if (document.fullscreenElement) {
-
-        await document.exitFullscreen();
-
-      }
-
-    } catch (error) {
-
-      console.log(
-        "Could not exit fullscreen.",
-        error
-      );
-
+    if (frame.requestFullscreen) {
+      await frame.requestFullscreen();
     }
 
+  } catch (error) {
 
-    frame.src = "";
+    console.log(
+      "Fullscreen was not available.",
+      error
+    );
 
-    player.style.display = "none";
+  }
+}
 
-    document.body.style.overflow = "";
+
+/* =========================
+   CLOSE
+========================= */
+
+async function closeGame() {
+
+  const player =
+    document.getElementById("gamePlayer");
+
+  const frame =
+    document.getElementById("gameFrame");
+
+  try {
+
+    if (document.fullscreenElement) {
+      await document.exitFullscreen();
+    }
+
+  } catch (error) {
+
+    console.log(
+      "Could not exit fullscreen.",
+      error
+    );
+
   }
 
+  frame.src = "";
 
-  /* =========================
-     ESCAPE KEY
-     ========================= */
+  player.style.display = "none";
 
-  document.addEventListener(
-    "keydown",
-    function(event) {
+  document.body.style.overflow = "";
+}
 
-      if (event.key === "Escape") {
 
-        const player =
-          document.getElementById("gamePlayer");
+/* =========================
+   ESCAPE
+========================= */
 
-        if (
-          player.style.display === "block"
-        ) {
+document.addEventListener(
+  "keydown",
+  function(event) {
 
-          closeGame();
+    if (event.key === "Escape") {
 
-        }
+      const player =
+        document.getElementById("gamePlayer");
 
+      if (player.style.display === "block") {
+        closeGame();
       }
 
     }
-  );
 
-
-  /* =========================
-     SEARCH
-     ========================= */
-
-  function searchMango(event) {
-
-    event.preventDefault();
-
-    const searchInput =
-      document.getElementById("searchInput");
-
-    const searchText =
-      searchInput.value.trim();
-
-
-    if (!searchText) {
-      return;
-    }
-
-
-    const encodedSearch =
-      btoa(
-        unescape(
-          encodeURIComponent(searchText)
-        )
-      );
-
-
-    window.location.href =
-      "https://3e3c.org/search?query=" +
-      encodedSearch;
   }
+);
+
+
+/* =========================
+   SEARCH
+========================= */
+
+function searchMango(event) {
+
+  event.preventDefault();
+
+  const searchInput =
+    document.getElementById("searchInput");
+
+  const searchText =
+    searchInput.value.trim();
+
+  if (!searchText) {
+    return;
+  }
+
+  const encodedSearch =
+    btoa(
+      unescape(
+        encodeURIComponent(searchText)
+      )
+    );
+
+  window.location.href =
+    "https://3e3c.org/search?query=" +
+    encodedSearch;
+}
 
 </script>
 
