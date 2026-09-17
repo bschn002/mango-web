@@ -34,7 +34,7 @@ header h1 {
   font-size: 48px;
 }
 
-/* ================= NAVIGATION ================= */
+/* ================= NAV ================= */
 
 nav {
   display: flex;
@@ -159,7 +159,7 @@ section h2 {
   background: #090909;
 }
 
-/* ================= MOVIE CARDS ================= */
+/* ================= MOVIES ================= */
 
 .movie-card {
   cursor: pointer;
@@ -174,7 +174,7 @@ section h2 {
   background: #090909;
 }
 
-/* ================= WEBSITE CARDS ================= */
+/* ================= WEBSITES ================= */
 
 .website-card a {
   display: block;
@@ -206,53 +206,73 @@ footer {
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: rgba(0, 0, 0, 0.97);
-  padding: 15px;
+  background: #000;
 }
 
 .game-player-box {
   width: 100%;
   height: 100%;
-  max-width: 1400px;
-  margin: auto;
   display: flex;
   flex-direction: column;
 }
 
 .game-player-header {
+  min-height: 64px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 10px 20px;
+  background: #000;
+  border-bottom: 2px solid #ff8c00;
 }
 
 .game-player-header h2 {
   margin: 0;
   color: #ff8c00;
+  font-size: 28px;
 }
 
-.close-button {
+.game-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.game-button {
   background: #ff8c00;
   color: #000;
   border: none;
-  padding: 10px 18px;
+  padding: 10px 16px;
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 15px;
 }
 
-.close-button:hover {
+.game-button:hover {
   background: #ffa733;
 }
 
 #gameFrame {
   flex: 1;
   width: 100%;
-  min-height: 0;
-  border: 2px solid #ff8c00;
-  border-radius: 10px;
-  background: white;
+  height: calc(100vh - 64px);
+  border: none;
+  background: #fff;
+}
+
+/* Real browser fullscreen */
+#gamePlayer:fullscreen {
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+}
+
+#gamePlayer:fullscreen .game-player-header {
+  min-height: 60px;
+}
+
+#gamePlayer:fullscreen #gameFrame {
+  height: calc(100vh - 60px);
 }
 
 /* ================= MOBILE ================= */
@@ -271,8 +291,17 @@ footer {
     width: 100%;
   }
 
-  section {
-    padding: 25px 15px;
+  .game-player-header {
+    padding: 8px 10px;
+  }
+
+  .game-player-header h2 {
+    font-size: 20px;
+  }
+
+  .game-button {
+    padding: 8px 10px;
+    font-size: 13px;
   }
 }
 </style>
@@ -320,121 +349,102 @@ footer {
 
   <div class="grid">
 
-    <div
-      class="card game-card"
+    <!-- Golf Orbit -->
+    <div class="card game-card"
       onclick="playGame(
         'Golf Orbit',
         'https://duck.exampredictor.org/class/golf-orbit'
-      )"
-    >
+      )">
       <div class="game-icon">⛳</div>
       <h3>Golf Orbit</h3>
     </div>
 
-
-    <div
-      class="card game-card"
+    <!-- Baseball Bros -->
+    <div class="card game-card"
       onclick="playGame(
         'Baseball Bros',
         'https://duck.exampredictor.org/class/baseball-bros'
-      )"
-    >
+      )">
       <div class="game-icon">⚾</div>
       <h3>Baseball Bros</h3>
     </div>
 
-
-    <div
-      class="card game-card"
+    <!-- Basket Bros -->
+    <div class="card game-card"
       onclick="playGame(
         'Basket Bros',
         'https://duck.exampredictor.org/class/basket-bros'
-      )"
-    >
+      )">
       <div class="game-icon">🏀</div>
       <h3>Basket Bros</h3>
     </div>
 
-
-    <div
-      class="card game-card"
+    <!-- Basketball Legends -->
+    <div class="card game-card"
       onclick="playGame(
         'Basketball Legends',
         'https://duck.exampredictor.org/class/basketball-legends'
-      )"
-    >
+      )">
       <div class="game-icon">🏀</div>
       <h3>Basketball Legends</h3>
     </div>
 
-
-    <div
-      class="card game-card"
+    <!-- Football Bros -->
+    <div class="card game-card"
       onclick="playGame(
         'Football Bros',
-        'https://duck.exampredictor.org/class/football-bros'
-      )"
-    >
+        'https://fb.vtune.net/'
+      )">
       <div class="game-icon">🏈</div>
       <h3>Football Bros</h3>
     </div>
 
-
-    <div
-      class="card game-card"
+    <!-- Fireboy and Watergirl -->
+    <div class="card game-card"
       onclick="playGame(
         'Fireboy and Watergirl',
         'https://www.coolmathgames.com/0-fireboy-watergirl-2-light-temple#immersiveModal'
-      )"
-    >
+      )">
       <div class="game-icon">🔥💧</div>
       <h3>Fireboy and Watergirl</h3>
     </div>
 
-
-    <div
-      class="card game-card"
+    <!-- Race -->
+    <div class="card game-card"
       onclick="playGame(
         'Race',
         'https://sites.google.com/view/drive-u-7-home-10/survival-race/race-fullscreen?authuser=0'
-      )"
-    >
+      )">
       <div class="game-icon">🏎️</div>
       <h3>Race</h3>
     </div>
 
-
-    <div
-      class="card game-card"
+    <!-- Dune Dash -->
+    <div class="card game-card"
       onclick="playGame(
         'Dune Dash',
         'https://sites.google.com/view/drive-u-7-home-10/dune-dash/dune-dash-fs?authuser=0'
-      )"
-    >
+      )">
       <div class="game-icon">🏜️</div>
       <h3>Dune Dash</h3>
     </div>
 
-
-    <div
-      class="card game-card"
+    <!-- OVO -->
+    <div class="card game-card"
       onclick="playGame(
         'OVO',
         'https://duck.exampredictor.org/class/ovo'
-      )"
-    >
+      )">
       <div class="game-icon">⚪</div>
       <h3>OVO</h3>
     </div>
 
-
-    <div
-      class="card game-card"
+    <!-- Run 3 -->
+    <div class="card game-card"
       onclick="playGame(
         'Run 3',
-        'https://duck.exampredictor.org/class/run-3'
-      )"
-    >
+        'https://www.run3.org/game'
+      )">
       <div class="game-icon">🏃</div>
       <h3>Run 3</h3>
     </div>
@@ -452,101 +462,68 @@ footer {
 
   <div class="grid">
 
-
-    <div
-      class="card movie-card"
-      onclick="openMovie('https://stellar.gdn/movie/969681')"
-    >
+    <div class="card movie-card"
+      onclick="openMovie('https://stellar.gdn/movie/969681')">
       <div class="movie-placeholder">🕷️</div>
       <h3>Spider-Man: Brand New Day</h3>
     </div>
 
-
-    <div
-      class="card movie-card"
-      onclick="openMovie('https://stellar.gdn/movie/1297842')"
-    >
+    <div class="card movie-card"
+      onclick="openMovie('https://stellar.gdn/movie/1297842')">
       <div class="movie-placeholder">🐐</div>
       <h3>GOAT</h3>
     </div>
 
-
-    <div
-      class="card movie-card"
-      onclick="openMovie('https://stellar.gdn/movie/550988')"
-    >
+    <div class="card movie-card"
+      onclick="openMovie('https://stellar.gdn/movie/550988')">
       <div class="movie-placeholder">🎬</div>
       <h3>Free Guy</h3>
     </div>
 
-
-    <div
-      class="card movie-card"
-      onclick="openMovie('https://stellar.gdn/movie/8193')"
-    >
+    <div class="card movie-card"
+      onclick="openMovie('https://stellar.gdn/movie/8193')">
       <div class="movie-placeholder">🎬</div>
       <h3>Napoleon Dynamite</h3>
     </div>
 
-
-    <div
-      class="card movie-card"
-      onclick="openMovie('https://stellar.gdn/movie/105')"
-    >
+    <div class="card movie-card"
+      onclick="openMovie('https://stellar.gdn/movie/105')">
       <div class="movie-placeholder">🚗</div>
       <h3>Back to the Future</h3>
     </div>
 
-
-    <div
-      class="card movie-card"
-      onclick="openMovie('https://stellar.gdn/movie/920')"
-    >
+    <div class="card movie-card"
+      onclick="openMovie('https://stellar.gdn/movie/920')">
       <div class="movie-placeholder">🏎️</div>
       <h3>Cars</h3>
     </div>
 
-
-    <div
-      class="card movie-card"
-      onclick="openMovie('https://stellar.gdn/movie/324849')"
-    >
+    <div class="card movie-card"
+      onclick="openMovie('https://stellar.gdn/movie/324849')">
       <div class="movie-placeholder">🦇</div>
       <h3>The LEGO Batman Movie</h3>
     </div>
 
-
-    <div
-      class="card movie-card"
-      onclick="openMovie('https://stellar.gdn/movie/629542')"
-    >
+    <div class="card movie-card"
+      onclick="openMovie('https://stellar.gdn/movie/629542')">
       <div class="movie-placeholder">🐺</div>
       <h3>The Bad Guys</h3>
     </div>
 
-
-    <div
-      class="card movie-card"
-      onclick="openMovie('https://stellar.gdn/movie/14817')"
-    >
+    <div class="card movie-card"
+      onclick="openMovie('https://stellar.gdn/movie/14817')">
       <div class="movie-placeholder">🍔</div>
       <h3>Good Burger</h3>
     </div>
 
-
-    <div
-      class="card movie-card"
-      onclick="openMovie('https://stellar.gdn/movie/950387')"
-    >
+    <div class="card movie-card"
+      onclick="openMovie('https://stellar.gdn/movie/950387')">
       <div class="movie-placeholder">⛏️</div>
       <h3>A Minecraft Movie</h3>
     </div>
 
-
-    <div
-      class="card movie-card"
-      onclick="openMovie('https://stellar.gdn/movie/268531')"
-    >
+    <div class="card movie-card"
+      onclick="openMovie('https://stellar.gdn/movie/268531')">
       <div class="movie-placeholder">📚</div>
       <h3>Captain Underpants: The First Epic Movie</h3>
     </div>
@@ -564,36 +541,26 @@ footer {
 
   <div class="grid">
 
-
     <div class="card website-card">
-
       <a
         href="https://www.google.com"
         target="_blank"
         rel="noopener noreferrer"
       >
-
         <div class="website-icon">🔎</div>
         <h3>Google</h3>
-
       </a>
-
     </div>
 
-
     <div class="card website-card">
-
       <a
         href="https://www.youtube.com"
         target="_blank"
         rel="noopener noreferrer"
       >
-
         <div class="website-icon">▶️</div>
         <h3>YouTube</h3>
-
       </a>
-
     </div>
 
   </div>
@@ -618,22 +585,30 @@ footer {
 
       <h2 id="gameTitle">Game</h2>
 
-      <button
-        class="close-button"
-        onclick="closeGame()"
-      >
-        ✕ Close
-      </button>
+      <div class="game-controls">
+
+        <button
+          class="game-button"
+          onclick="fullscreenGame()">
+          ⛶ Full Screen
+        </button>
+
+        <button
+          class="game-button"
+          onclick="closeGame()">
+          ✕ Close
+        </button>
+
+      </div>
 
     </div>
-
 
     <iframe
       id="gameFrame"
       allow="fullscreen; autoplay; gamepad"
       allowfullscreen
-      frameborder="0"
-    ></iframe>
+      frameborder="0">
+    </iframe>
 
   </div>
 
@@ -644,40 +619,78 @@ footer {
 
 <script>
 
-/* GAME PLAYER */
+/* ================= GAME PLAYER ================= */
 
 function playGame(title, url) {
 
-  document.getElementById("gameTitle").textContent = title;
+  const player = document.getElementById("gamePlayer");
+  const frame = document.getElementById("gameFrame");
+  const titleBox = document.getElementById("gameTitle");
 
-  document.getElementById("gameFrame").src = url;
+  titleBox.textContent = title;
 
-  document.getElementById("gamePlayer").style.display = "block";
+  frame.src = url;
+
+  player.style.display = "block";
 
   document.body.style.overflow = "hidden";
 }
 
 
-function closeGame() {
+/* ================= FULLSCREEN ================= */
 
-  document.getElementById("gamePlayer").style.display = "none";
+async function fullscreenGame() {
 
-  document.getElementById("gameFrame").src = "";
+  const player = document.getElementById("gamePlayer");
+
+  try {
+
+    if (player.requestFullscreen) {
+      await player.requestFullscreen();
+    }
+
+  } catch (error) {
+    console.log("Fullscreen was not available.", error);
+  }
+
+}
+
+
+/* ================= CLOSE GAME ================= */
+
+async function closeGame() {
+
+  const player = document.getElementById("gamePlayer");
+  const frame = document.getElementById("gameFrame");
+
+  try {
+
+    if (document.fullscreenElement) {
+      await document.exitFullscreen();
+    }
+
+  } catch (error) {
+    console.log("Could not exit fullscreen.", error);
+  }
+
+  player.style.display = "none";
+
+  frame.src = "";
 
   document.body.style.overflow = "auto";
 }
 
 
-/* MOVIES */
+/* ================= MOVIES ================= */
 
 function openMovie(url) {
 
-  window.open(url, "_blank");
+  window.open(url, "_blank", "noopener,noreferrer");
 
 }
 
 
-/* SEARCH */
+/* ================= SEARCH ================= */
 
 document.getElementById("searchForm").addEventListener(
   "submit",
@@ -706,16 +719,32 @@ document.getElementById("searchForm").addEventListener(
 );
 
 
-/* ESCAPE KEY */
+/* ================= ESC KEY ================= */
 
 document.addEventListener(
   "keydown",
   function(event) {
 
     if (event.key === "Escape") {
-
       closeGame();
+    }
 
+  }
+);
+
+
+/* ================= FULLSCREEN CHANGE ================= */
+
+document.addEventListener(
+  "fullscreenchange",
+  function() {
+
+    const player = document.getElementById("gamePlayer");
+
+    if (!document.fullscreenElement &&
+        player.style.display === "block") {
+
+      player.style.display = "block";
     }
 
   }
