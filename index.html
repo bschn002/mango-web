@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -207,21 +208,32 @@ footer {
   inset: 0;
   z-index: 9999;
   background: #000;
+  overflow: hidden;
 }
 
 .game-player-box {
   width: 100%;
   height: 100%;
+  min-height: 0;
   display: flex;
   flex-direction: column;
+  background: #000;
+  overflow: hidden;
 }
 
+/* MANGO WEB GAME HEADER */
+
 .game-player-header {
+  flex: 0 0 64px;
+  height: 64px;
   min-height: 64px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   padding: 10px 20px;
+
   background: #000;
   border-bottom: 2px solid #ff8c00;
 }
@@ -252,27 +264,59 @@ footer {
   background: #ffa733;
 }
 
+/* ================= GAME ITSELF ================= */
+
+/*
+   THIS IS THE IMPORTANT PART.
+
+   The iframe takes up ALL remaining space
+   inside the Mango Web game box.
+*/
+
 #gameFrame {
-  flex: 1;
+  display: block;
+
+  flex: 1 1 auto;
+
   width: 100%;
-  height: calc(100vh - 64px);
-  border: none;
-  background: #fff;
+  height: auto;
+
+  min-width: 0;
+  min-height: 0;
+
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+
+  background: #000;
+
+  overflow: hidden;
 }
 
-/* Real browser fullscreen */
+/* ================= REAL BROWSER FULLSCREEN ================= */
+
 #gamePlayer:fullscreen {
   width: 100vw;
   height: 100vh;
   background: #000;
 }
 
+#gamePlayer:fullscreen .game-player-box {
+  width: 100vw;
+  height: 100vh;
+}
+
 #gamePlayer:fullscreen .game-player-header {
+  flex-basis: 60px;
+  height: 60px;
   min-height: 60px;
 }
 
 #gamePlayer:fullscreen #gameFrame {
-  height: calc(100vh - 60px);
+  width: 100%;
+  height: auto;
+  flex: 1 1 auto;
 }
 
 /* ================= MOBILE ================= */
@@ -292,6 +336,9 @@ footer {
   }
 
   .game-player-header {
+    flex-basis: 58px;
+    height: 58px;
+    min-height: 58px;
     padding: 8px 10px;
   }
 
@@ -349,7 +396,6 @@ footer {
 
   <div class="grid">
 
-    <!-- Golf Orbit -->
     <div class="card game-card"
       onclick="playGame(
         'Golf Orbit',
@@ -359,7 +405,6 @@ footer {
       <h3>Golf Orbit</h3>
     </div>
 
-    <!-- Baseball Bros -->
     <div class="card game-card"
       onclick="playGame(
         'Baseball Bros',
@@ -369,7 +414,6 @@ footer {
       <h3>Baseball Bros</h3>
     </div>
 
-    <!-- Basket Bros -->
     <div class="card game-card"
       onclick="playGame(
         'Basket Bros',
@@ -379,7 +423,6 @@ footer {
       <h3>Basket Bros</h3>
     </div>
 
-    <!-- Basketball Legends -->
     <div class="card game-card"
       onclick="playGame(
         'Basketball Legends',
@@ -389,7 +432,6 @@ footer {
       <h3>Basketball Legends</h3>
     </div>
 
-    <!-- Football Bros -->
     <div class="card game-card"
       onclick="playGame(
         'Football Bros',
@@ -399,7 +441,6 @@ footer {
       <h3>Football Bros</h3>
     </div>
 
-    <!-- Fireboy and Watergirl -->
     <div class="card game-card"
       onclick="playGame(
         'Fireboy and Watergirl',
@@ -409,7 +450,6 @@ footer {
       <h3>Fireboy and Watergirl</h3>
     </div>
 
-    <!-- Race -->
     <div class="card game-card"
       onclick="playGame(
         'Race',
@@ -419,7 +459,6 @@ footer {
       <h3>Race</h3>
     </div>
 
-    <!-- Dune Dash -->
     <div class="card game-card"
       onclick="playGame(
         'Dune Dash',
@@ -429,7 +468,6 @@ footer {
       <h3>Dune Dash</h3>
     </div>
 
-    <!-- OVO -->
     <div class="card game-card"
       onclick="playGame(
         'OVO',
@@ -439,7 +477,6 @@ footer {
       <h3>OVO</h3>
     </div>
 
-    <!-- Run 3 -->
     <div class="card game-card"
       onclick="playGame(
         'Run 3',
@@ -619,8 +656,6 @@ footer {
 
 <script>
 
-/* ================= GAME PLAYER ================= */
-
 function playGame(title, url) {
 
   const player = document.getElementById("gamePlayer");
@@ -650,7 +685,9 @@ async function fullscreenGame() {
     }
 
   } catch (error) {
+
     console.log("Fullscreen was not available.", error);
+
   }
 
 }
@@ -670,7 +707,9 @@ async function closeGame() {
     }
 
   } catch (error) {
+
     console.log("Could not exit fullscreen.", error);
+
   }
 
   player.style.display = "none";
@@ -732,25 +771,8 @@ document.addEventListener(
   }
 );
 
-
-/* ================= FULLSCREEN CHANGE ================= */
-
-document.addEventListener(
-  "fullscreenchange",
-  function() {
-
-    const player = document.getElementById("gamePlayer");
-
-    if (!document.fullscreenElement &&
-        player.style.display === "block") {
-
-      player.style.display = "block";
-    }
-
-  }
-);
-
 </script>
 
 </body>
 </html>
+```
